@@ -1,0 +1,6 @@
+{
+  "name": "Gaon Samaj - Bihar Social Initiative",
+  "description": "Official portal for Gaon Samaj (gaonsamaj.com) & Bihar Social Initiative — empowering local populations in Bihar through education, women's rights, Madhubani craft, rural development, and bilingual English/Hindi accessibility.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
