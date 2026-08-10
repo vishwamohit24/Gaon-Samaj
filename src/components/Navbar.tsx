@@ -114,12 +114,6 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenD
             }}
             className="flex items-center gap-3 cursor-pointer group"
           >
-            <div className="w-12 h-12 rounded-full bg-amber-100 border-2 border-amber-500 flex items-center justify-center p-2 shadow-sm group-hover:scale-105 transition-transform">
-              <div className="relative flex items-center justify-center">
-                <TreePine className="w-7 h-7 text-emerald-700" />
-                <div className="absolute -bottom-1 w-5 h-1 bg-amber-800 rounded-full"></div>
-              </div>
-            </div>
             <div className="flex flex-col">
               <span className="font-black text-xl tracking-tight text-gray-900 leading-none">
                 {t('orgName')} <span className="text-amber-600">.COM</span>

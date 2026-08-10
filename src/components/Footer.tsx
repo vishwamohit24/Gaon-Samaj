@@ -34,7 +34,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenDonate }) =>
           
           {/* About Us Column */}
           <div className="space-y-4">
-            <h3 className="font-bold text-lg text-amber-950 tracking-tight">{t('aboutUsHeading')}</h3>
+            <img src="/logo.png" alt="Gaon Samaj Logo" className="w-40 h-auto bg-white p-2 rounded-2xl shadow-sm border-2 border-amber-500/30" />
             <p className="text-sm leading-relaxed text-amber-900 font-medium">
               {t('aboutUsFooter')}
             </p>
