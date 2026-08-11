@@ -115,14 +115,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenD
             className="flex items-center gap-3 cursor-pointer group"
           >
             <div className="flex flex-col">
-              <span className="font-black text-xl tracking-tight text-gray-900 leading-none">
-                {t('orgName')} <span className="text-amber-600">.COM</span>
-              </span>
-              <span className="text-[11px] font-extrabold text-amber-800 tracking-wider uppercase mt-0.5">
-                {t('orgSubName')}
-              </span>
-              <span className="text-[10px] text-stone-600 font-semibold italic">
-                {t('tagline')}
+              <span className="font-anton text-3xl tracking-wide text-orange-600 leading-none">
+                {t('orgName')}
               </span>
             </div>
           </div>
