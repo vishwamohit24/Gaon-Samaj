@@ -1,4 +1,4 @@
-export type ScreenTab = 'home' | 'about' | 'projects' | 'focus' | 'impact' | 'stories' | 'get-involved' | 'contact';
+export type ScreenTab = 'home' | 'about' | 'projects' | 'focus' | 'impact' | 'stories' | 'media' | 'get-involved' | 'contact';
 
 export interface Director {
   id: string;

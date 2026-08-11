@@ -18,6 +18,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenD
     { id: 'about', labelKey: 'navAbout' },
     { id: 'projects', labelKey: 'navProjects' },
     { id: 'stories', labelKey: 'navStories' },
+    { id: 'media', labelKey: 'navMedia' },
     { id: 'contact', labelKey: 'navContact' },
   ];
 

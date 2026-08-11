@@ -266,7 +266,7 @@ export const PROJECTS: BilingualProject[] = [
     locationHi: 'सारण एवं पटना, बिहार',
     beneficiaries: '15,000+ Youth',
     beneficiariesHi: '15,000+ युवा',
-    imageUrl: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80',
+    imageUrl: '/media-1.jpg',
     secondaryImages: [
       'https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=800&q=80'
@@ -288,7 +288,7 @@ export const PROJECTS: BilingualProject[] = [
     locationHi: 'मधुबनी एवं दरभंगा, बिहार',
     beneficiaries: '28,000+ Women',
     beneficiariesHi: '28,000+ महिलाएं',
-    imageUrl: 'https://images.unsplash.com/photo-1590402494682-cd3fb53b1f70?auto=format&fit=crop&w=800&q=80',
+    imageUrl: '/media-4.jpg',
     secondaryImages: [
       'https://images.unsplash.com/photo-1606761568499-6d2451b23c66?auto=format&fit=crop&w=800&q=80'
     ],
@@ -309,7 +309,7 @@ export const PROJECTS: BilingualProject[] = [
     locationHi: 'नालंदा एवं राजगीर, बिहार',
     beneficiaries: '45 Village Homestays',
     beneficiariesHi: '45 ग्रामीण होमस्टे',
-    imageUrl: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80',
+    imageUrl: '/media-2.jpg',
     status: 'active',
     fundedPercentage: 70,
   },
@@ -327,7 +327,7 @@ export const PROJECTS: BilingualProject[] = [
     locationHi: 'गया एवं औरंगाबाद, बिहार',
     beneficiaries: '120 Villages',
     beneficiariesHi: '120 गांव',
-    imageUrl: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80',
+    imageUrl: '/media-3.jpg',
     status: 'active',
     fundedPercentage: 78,
   },
@@ -345,7 +345,7 @@ export const PROJECTS: BilingualProject[] = [
     locationHi: 'बोधगया एवं वैशाली, बिहार',
     beneficiaries: '3,500 Artisans & Guides',
     beneficiariesHi: '3,500 कलाकार व गाइड',
-    imageUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
+    imageUrl: '/media-5.jpg',
     status: 'active',
     fundedPercentage: 88,
   },

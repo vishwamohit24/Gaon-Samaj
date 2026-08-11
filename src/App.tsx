@@ -8,6 +8,7 @@ import { AboutScreen } from './components/AboutScreen';
 import { ProjectsScreen } from './components/ProjectsScreen';
 import { ImpactScreen } from './components/ImpactScreen';
 import { StoriesScreen } from './components/StoriesScreen';
+import { MediaScreen } from './components/MediaScreen';
 import { GetInvolvedScreen } from './components/GetInvolvedScreen';
 import { ContactScreen } from './components/ContactScreen';
 import { ProjectDetailModal } from './components/ProjectDetailModal';
@@ -71,6 +72,10 @@ export default function App() {
               setActiveTab={setActiveTab}
               onOpenDonate={() => handleOpenDonate(1500)}
             />
+          )}
+
+          {activeTab === 'media' && (
+            <MediaScreen />
           )}
 
           {activeTab === 'contact' && (
