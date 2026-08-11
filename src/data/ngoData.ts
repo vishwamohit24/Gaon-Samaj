@@ -20,7 +20,7 @@ export const HERO_SLIDES: BilingualHeroSlide[] = [
     titleHi: 'सशक्त बिहार, समृद्ध गांव समाज',
     subtitle: 'Building a sustainable future through education, women empowerment, and community action across all 38 districts of Bihar with Gaon Samaj.',
     subtitleHi: 'गांव समाज संस्था के माध्यम से बिहार के सभी 38 जिलों में शिक्षा, महिला सशक्तिकरण और ग्रामीण विकास की दिशा में सतत प्रयास।',
-    imageUrl: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1600&q=80',
+    imageUrl: '/hero-healthy-bihar.png',
     tag: 'Youth & Education',
     tagHi: 'युवा एवं शिक्षा',
     ctaText: 'Learn More',
