@@ -94,18 +94,8 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
         </div>
 
         {/* Hero Overlay Banner Box */}
-        <div className="absolute bottom-0 inset-x-0 z-20 pb-8 pt-12 bg-gradient-to-t from-stone-950/95 via-stone-950/80 to-transparent flex flex-col items-center text-center px-4">
-          <span className="bg-amber-400/90 text-amber-950 text-xs font-black uppercase tracking-widest px-3.5 py-1 rounded-full mb-2">
-            {isHindi ? activeSlide.tagHi : activeSlide.tag}
-          </span>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight max-w-3xl drop-shadow-md">
-            {isHindi ? activeSlide.titleHi : activeSlide.title}
-          </h1>
-          <p className="text-sm sm:text-base text-stone-200 mt-2 max-w-2xl font-normal">
-            {isHindi ? activeSlide.subtitleHi : activeSlide.subtitle}
-          </p>
-
-          <div className="mt-5 flex items-center gap-4">
+        <div className="absolute bottom-0 inset-x-0 z-20 pb-8 pt-16 bg-gradient-to-t from-stone-950/60 to-transparent px-6 sm:px-12 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6">
+          <div className="flex items-center gap-4">
             <button
               onClick={() => {
                 setActiveTab('projects');
@@ -117,20 +107,20 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
             </button>
             <button
               onClick={onOpenDonate}
-              className="bg-stone-800/80 hover:bg-stone-800 text-amber-300 border border-amber-400/40 font-bold px-6 py-2.5 rounded-lg transition-all"
+              className="bg-stone-800/80 hover:bg-stone-800 text-amber-300 border border-amber-400/40 font-bold px-6 py-2.5 rounded-lg transition-all shadow-md"
             >
               {t('supportCause')}
             </button>
           </div>
 
           {/* Carousel Dots */}
-          <div className="flex space-x-2 mt-6">
+          <div className="flex space-x-2 pb-2">
             {HERO_SLIDES.map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => setCurrentSlide(idx)}
                 className={`w-3 h-3 rounded-full transition-all ${
-                  idx === currentSlide ? 'bg-amber-400 w-8' : 'bg-white/40 hover:bg-white/70'
+                  idx === currentSlide ? 'bg-amber-400 w-8' : 'bg-white/40 hover:bg-white/70 shadow-sm'
                 }`}
                 aria-label={`Go to slide ${idx + 1}`}
               />

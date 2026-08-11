@@ -56,7 +56,7 @@ export const HERO_SLIDES: BilingualHeroSlide[] = [
     titleHi: 'जमीनी स्तर पर कृषि एवं किसान विकास',
     subtitle: 'Equipping smallholder farmers with solar water pumps, organic fertilizer knowledge, and direct market access.',
     subtitleHi: 'छोटे किसानों को सौर ऊर्जा सिंचाई पंप, जैविक खाद तकनीक और सीधे बाजार से जोड़कर आत्मनिर्भर बनाना।',
-    imageUrl: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80',
+    imageUrl: '/hero-viksit-bihar.jpg',
     tag: 'Rural Economy',
     tagHi: 'ग्रामीण अर्थव्यवस्था',
     ctaText: 'Farmer Stories',
