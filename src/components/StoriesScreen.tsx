@@ -3,12 +3,17 @@ import { Story } from '../types';
 import { STORIES, BilingualStory } from '../data/ngoData';
 import { useLanguage } from '../context/LanguageContext';
 import { Calendar, User, Clock, ArrowRight } from 'lucide-react';
+import { ImpactScreen } from './ImpactScreen';
+import { ScreenTab } from '../types';
 
 interface StoriesScreenProps {
   onSelectStory: (story: Story) => void;
+  setActiveTab: (tab: ScreenTab) => void;
+  onOpenDonate: () => void;
 }
 
-export const StoriesScreen: React.FC<StoriesScreenProps> = ({ onSelectStory }) => {
+export const StoriesScreen: React.FC<StoriesScreenProps> = ({ onSelectStory, setActiveTab, onOpenDonate }) => {
+  const [activeMainTab, setActiveMainTab] = useState<'stories' | 'impact'>('stories');
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const { t, isHindi } = useLanguage();
 
@@ -24,8 +29,35 @@ export const StoriesScreen: React.FC<StoriesScreenProps> = ({ onSelectStory }) =
     : STORIES.filter((s) => s.category === activeCategory);
 
   return (
-    <div className="w-full bg-stone-50/50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <div className="w-full bg-stone-50/50">
+      {/* Sub-navigation Tabs */}
+      <div className="w-full border-b border-stone-200 bg-white">
+        <div className="max-w-7xl mx-auto px-4 flex justify-center py-4">
+          <div className="bg-stone-100 p-1 rounded-xl flex gap-1 border border-stone-200">
+            <button
+              onClick={() => setActiveMainTab('stories')}
+              className={`px-6 py-2 rounded-lg text-sm font-black transition-all ${
+                activeMainTab === 'stories' ? 'bg-amber-400 text-amber-950 shadow-sm' : 'text-stone-600 hover:text-stone-900'
+              }`}
+            >
+              {isHindi ? 'सफलता की कहानियाँ' : 'Success Stories'}
+            </button>
+            <button
+              onClick={() => setActiveMainTab('impact')}
+              className={`px-6 py-2 rounded-lg text-sm font-black transition-all ${
+                activeMainTab === 'impact' ? 'bg-amber-400 text-amber-950 shadow-sm' : 'text-stone-600 hover:text-stone-900'
+              }`}
+            >
+              {isHindi ? 'हमारा प्रभाव' : 'Our Impact'}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {activeMainTab === 'impact' ? (
+        <ImpactScreen setActiveTab={setActiveTab} onOpenDonate={onOpenDonate} />
+      ) : (
+        <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         
         <div className="text-center max-w-2xl mx-auto mb-10">
           <h1 className="text-3xl sm:text-4xl font-black text-stone-900 tracking-tight mb-2">
@@ -104,6 +136,7 @@ export const StoriesScreen: React.FC<StoriesScreenProps> = ({ onSelectStory }) =
         </div>
 
       </div>
+      )}
     </div>
   );
 };

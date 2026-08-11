@@ -76,7 +76,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenDonate }) =>
                 </button>
               </li>
               <li>
-                <button onClick={() => { setActiveTab('get-involved'); window.scrollTo(0,0); }} className="hover:underline hover:text-amber-950">
+                <button onClick={() => { setActiveTab('contact'); window.scrollTo(0,0); }} className="hover:underline hover:text-amber-950">
                   {t('getInvolved')}
                 </button>
               </li>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ScreenTab } from '../types';
 import { useLanguage } from '../context/LanguageContext';
-import { Menu, X, Heart, TreePine, Phone, Mail, Globe, Check, Facebook, Instagram, Youtube, Linkedin } from 'lucide-react';
+import { Menu, X, Heart, TreePine, Phone, Mail, Globe, Check, Facebook, Instagram, Youtube, Linkedin, Sparkles } from 'lucide-react';
 
 interface NavbarProps {
   activeTab: ScreenTab;
@@ -17,10 +17,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenD
     { id: 'home', labelKey: 'navHome' },
     { id: 'about', labelKey: 'navAbout' },
     { id: 'projects', labelKey: 'navProjects' },
-    { id: 'focus', labelKey: 'navFocus' },
-    { id: 'impact', labelKey: 'navImpact' },
     { id: 'stories', labelKey: 'navStories' },
-    { id: 'get-involved', labelKey: 'navGetInvolved' },
     { id: 'contact', labelKey: 'navContact' },
   ];
 
@@ -61,37 +58,21 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenD
 
             <span className="text-amber-700">|</span>
 
-            {/* Language Switcher Pill in Top Bar */}
-            <div className="flex items-center bg-amber-950/10 p-0.5 rounded-full border border-amber-950/20">
-              <button
-                onClick={() => setLang('en')}
-                className={`px-2 py-0.5 rounded-full text-[11px] font-extrabold transition-all ${
-                  lang === 'en'
-                    ? 'bg-amber-950 text-amber-300 shadow-xs'
-                    : 'text-amber-900 hover:text-amber-950'
-                }`}
-                title="Switch to English"
-              >
-                EN
-              </button>
-              <button
-                onClick={() => setLang('hi')}
-                className={`px-2 py-0.5 rounded-full text-[11px] font-extrabold transition-all ${
-                  lang === 'hi'
-                    ? 'bg-amber-950 text-amber-300 shadow-xs'
-                    : 'text-amber-900 hover:text-amber-950'
-                }`}
-                title="हिंदी में बदलें"
-              >
-                हिंदी
-              </button>
-            </div>
+            {/* Smart Switch AI Language Toggle */}
+            <button
+              onClick={toggleLang}
+              className="flex items-center gap-1.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-indigo-600 hover:via-purple-600 hover:to-pink-600 text-white px-3 py-1 rounded-full text-[11px] font-black tracking-wide shadow-sm hover:shadow-md transition-all group"
+              title={isHindi ? 'Switch to English' : 'हिंदी में बदलें'}
+            >
+              <Sparkles className="w-3.5 h-3.5 animate-pulse text-yellow-200" />
+              <span>{isHindi ? 'AI Translate : EN' : 'AI अनुवाद : HI'}</span>
+            </button>
 
             <span className="text-amber-700">|</span>
 
             <button
               onClick={() => {
-                setActiveTab('get-involved');
+                setActiveTab('contact');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
               className="hover:underline font-bold text-amber-950"
@@ -174,10 +155,10 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenD
             
             <button
               onClick={toggleLang}
-              className="px-2.5 py-1.5 rounded-md bg-stone-100 text-stone-900 border border-stone-300 text-xs font-bold flex items-center gap-1"
+              className="px-2.5 py-1.5 rounded-md bg-gradient-to-r from-indigo-500 to-pink-500 text-white text-xs font-black flex items-center gap-1 shadow-sm"
             >
-              <Globe className="w-3.5 h-3.5 text-amber-700" />
-              <span>{lang === 'en' ? 'हिंदी' : 'EN'}</span>
+              <Sparkles className="w-3 h-3 text-yellow-200" />
+              <span>{lang === 'en' ? 'HI' : 'EN'}</span>
             </button>
 
             <button
@@ -202,31 +183,6 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenD
       {mobileMenuOpen && (
         <div className="xl:hidden bg-white border-b border-amber-200 shadow-xl px-4 pt-2 pb-6 space-y-2 animate-fadeIn">
           
-          {/* Mobile Language Bar */}
-          <div className="bg-amber-50 p-2.5 rounded-xl border border-amber-200 flex items-center justify-between mb-3">
-            <span className="text-xs font-bold text-amber-950 flex items-center gap-1.5">
-              <Globe className="w-4 h-4 text-amber-700" />
-              {t('languageToggleLabel')}:
-            </span>
-            <div className="flex bg-white rounded-lg border border-amber-300 p-0.5">
-              <button
-                onClick={() => setLang('en')}
-                className={`px-3 py-1 text-xs font-extrabold rounded-md ${
-                  lang === 'en' ? 'bg-amber-400 text-amber-950 shadow-xs' : 'text-stone-600'
-                }`}
-              >
-                English
-              </button>
-              <button
-                onClick={() => setLang('hi')}
-                className={`px-3 py-1 text-xs font-extrabold rounded-md ${
-                  lang === 'hi' ? 'bg-amber-400 text-amber-950 shadow-xs' : 'text-stone-600'
-                }`}
-              >
-                हिंदी
-              </button>
-            </div>
-          </div>
 
           {navItems.map((item) => (
             <button

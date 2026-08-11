@@ -65,28 +65,19 @@ export default function App() {
             />
           )}
 
-          {activeTab === 'impact' && (
-            <ImpactScreen
+          {activeTab === 'stories' && (
+            <StoriesScreen
+              onSelectStory={(story) => setSelectedStory(story)}
               setActiveTab={setActiveTab}
               onOpenDonate={() => handleOpenDonate(1500)}
             />
           )}
 
-          {activeTab === 'stories' && (
-            <StoriesScreen
-              onSelectStory={(story) => setSelectedStory(story)}
-            />
-          )}
-
-          {activeTab === 'get-involved' && (
-            <GetInvolvedScreen
-              onOpenDonate={(amt) => handleOpenDonate(amt)}
-              setActiveTab={setActiveTab}
-            />
-          )}
-
           {activeTab === 'contact' && (
-            <ContactScreen />
+            <ContactScreen 
+              onOpenDonate={(amt) => handleOpenDonate(amt)} 
+              setActiveTab={setActiveTab} 
+            />
           )}
         </main>
 

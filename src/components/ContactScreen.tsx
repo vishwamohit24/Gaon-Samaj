@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle2 } from 'lucide-react';
+import { GetInvolvedScreen } from './GetInvolvedScreen';
+import { ScreenTab } from '../types';
 
-export const ContactScreen: React.FC = () => {
+interface ContactScreenProps {
+  onOpenDonate: (customAmount?: number) => void;
+  setActiveTab: (tab: ScreenTab) => void;
+}
+
+export const ContactScreen: React.FC<ContactScreenProps> = ({ onOpenDonate, setActiveTab }) => {
+  const [activeMainTab, setActiveMainTab] = useState<'contact' | 'involved'>('contact');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -24,8 +32,35 @@ export const ContactScreen: React.FC = () => {
   };
 
   return (
-    <div className="w-full bg-amber-50/20 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto space-y-12">
+    <div className="w-full bg-amber-50/20">
+      {/* Sub-navigation Tabs */}
+      <div className="w-full border-b border-amber-200 bg-white">
+        <div className="max-w-7xl mx-auto px-4 flex justify-center py-4">
+          <div className="bg-amber-100/50 p-1 rounded-xl flex gap-1 border border-amber-200">
+            <button
+              onClick={() => setActiveMainTab('contact')}
+              className={`px-6 py-2 rounded-lg text-sm font-black transition-all ${
+                activeMainTab === 'contact' ? 'bg-amber-400 text-amber-950 shadow-sm' : 'text-stone-600 hover:text-stone-900'
+              }`}
+            >
+              {isHindi ? 'संपर्क करें' : 'Contact Us'}
+            </button>
+            <button
+              onClick={() => setActiveMainTab('involved')}
+              className={`px-6 py-2 rounded-lg text-sm font-black transition-all ${
+                activeMainTab === 'involved' ? 'bg-amber-400 text-amber-950 shadow-sm' : 'text-stone-600 hover:text-stone-900'
+              }`}
+            >
+              {isHindi ? 'सहयोग करें' : 'Get Involved'}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {activeMainTab === 'involved' ? (
+        <GetInvolvedScreen onOpenDonate={onOpenDonate} setActiveTab={setActiveTab} />
+      ) : (
+        <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto">
@@ -203,6 +238,7 @@ export const ContactScreen: React.FC = () => {
         </div>
 
       </div>
+      )}
     </div>
   );
 };
