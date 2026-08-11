@@ -32,7 +32,7 @@ export const HERO_SLIDES: BilingualHeroSlide[] = [
     titleHi: 'मधुबनी कला एवं शिल्प पुनरुद्धार',
     subtitle: 'Providing direct livelihoods to rural craftswomen while preserving Bihar’s 3,000-year-old heritage art forms.',
     subtitleHi: 'बिहार की 3000 साल पुरानी पारंपरिक मधुबनी चित्रकला को सहेजते हुए ग्रामीण महिलाओं को सीधा रोजगार उपलब्ध कराना।',
-    imageUrl: 'https://images.unsplash.com/photo-1606761568499-6d2451b23c66?auto=format&fit=crop&w=1600&q=80',
+    imageUrl: '/hero-empowered-bihar.png',
     tag: 'Cultural Heritage',
     tagHi: 'सांस्कृतिक विरासत',
     ctaText: 'Explore Artisans',
