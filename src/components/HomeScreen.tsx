@@ -397,7 +397,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
               </blockquote>
             )}
 
-            <p className="text-sm text-stone-700 leading-relaxed font-normal mb-6">
+            <p className="text-sm text-stone-700 leading-relaxed font-normal mb-6 whitespace-pre-line">
               {isHindi ? selectedDirector.fullBioHi || selectedDirector.fullBio : selectedDirector.fullBio}
             </p>
 
