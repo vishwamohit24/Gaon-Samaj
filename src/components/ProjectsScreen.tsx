@@ -185,6 +185,26 @@ export const ProjectsScreen: React.FC<ProjectsScreenProps> = ({
           </div>
 
         </div>
+
+        {/* Our Collective Vision Section */}
+        <div className="mt-16 bg-white p-8 sm:p-10 rounded-3xl shadow-sm border border-stone-200">
+          <h2 className="text-2xl sm:text-3xl font-black text-stone-900 mb-6 text-center">
+            {isHindi ? 'हमारा सामूहिक दृष्टिकोण (विजन)' : 'Our Collective Vision'}
+          </h2>
+          <div className="space-y-4 text-stone-700 text-sm sm:text-base leading-relaxed">
+            <p>
+              {isHindi 
+                ? 'ये सभी पहल आपस में जुड़ी हुई हैं। स्वस्थ युवा शिक्षा में योगदान देते हैं। शिक्षा सुशासन को मजबूत करती है। सुशासन पर्यटन और संस्कृति का समर्थन करता है। संस्कृति पहचान और आजीविका बनाती है। पर्यावरण संरक्षण समुदायों को बनाए रखता है। कला और कहानी कहने से समाज की भावना संरक्षित होती है।'
+                : 'These initiatives are interconnected. A healthy youth contributes to education. Education strengthens governance. Good governance supports tourism and culture. Culture creates identity and livelihoods. Environmental protection sustains communities. Art and storytelling preserve the spirit of society.'}
+            </p>
+            <p>
+              {isHindi 
+                ? 'गांव समाज एक ऐसे बिहार की दिशा में काम कर रहा है जो स्वस्थ, शिक्षित, आत्मनिर्भर, सांस्कृतिक रूप से आश्वस्त, पर्यावरण के प्रति जिम्मेदार और सामुदायिक भागीदारी से प्रेरित हो। नागरिकों, स्वयंसेवकों, महिलाओं के समूहों, शिक्षकों, पेशेवरों और स्थानीय संस्थानों के साथ साझेदारी के माध्यम से, हम न केवल परियोजनाओं का निर्माण करना चाहते हैं, बल्कि भावी पीढ़ियों के लिए स्थायी सामाजिक आंदोलन बनाना चाहते हैं।'
+                : 'Gaon Samaj is working toward a Bihar that is healthy, educated, self-reliant, culturally confident, environmentally responsible, and driven by community participation. Through partnerships with citizens, volunteers, women’s groups, educators, professionals, and local institutions, we aim to build not just projects, but lasting social movements for future generations.'}
+            </p>
+          </div>
+        </div>
+
       </div>
 
       {/* Upcoming Project Detail Modal */}

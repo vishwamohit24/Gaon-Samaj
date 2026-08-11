@@ -117,7 +117,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Projects Screen
     projectsTitle: 'Projects & Initiatives',
-    projectsSub: 'Discover active field programs running across Bihar’s 38 districts.',
+    projectsSub: 'Gaon Samaj is committed to building a stronger, healthier, culturally vibrant, and self-reliant Bihar. Our initiatives are designed not as isolated campaigns, but as long-term community movements that connect youth, women, villages, culture, environment, and local livelihoods. Each project is being developed through community participation, awareness, leadership development, and sustainable grassroots action.',
     filterAll: 'All Projects',
     filterYouth: 'Youth',
     filterWomen: 'Women',
@@ -289,7 +289,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Projects Screen
     projectsTitle: 'परियोजनाएं एवं पहल',
-    projectsSub: 'बिहार के 38 जिलों में चल रही हमारी जमीनी विकास योजनाओं की जानकारी।',
+    projectsSub: 'गांव समाज एक मजबूत, स्वस्थ, सांस्कृतिक रूप से जीवंत और आत्मनिर्भर बिहार के निर्माण के लिए प्रतिबद्ध है। हमारी पहल अलग-थलग अभियानों के रूप में नहीं, बल्कि दीर्घकालिक सामुदायिक आंदोलनों के रूप में तैयार की गई है जो युवाओं, महिलाओं, गांवों, संस्कृति, पर्यावरण और स्थानीय आजीविका को जोड़ती है। प्रत्येक परियोजना सामुदायिक भागीदारी, जागरूकता, नेतृत्व विकास और स्थायी जमीनी कार्रवाई के माध्यम से विकसित की जा रही है।',
     filterAll: 'सभी परियोजनाएं',
     filterYouth: 'युवा विकास',
     filterWomen: 'महिला सशक्तिकरण',
