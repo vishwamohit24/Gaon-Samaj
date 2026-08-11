@@ -44,7 +44,7 @@ export const HERO_SLIDES: BilingualHeroSlide[] = [
     titleHi: 'गंगा तट एवं ग्रामीण इको-टूरिज्म',
     subtitle: 'Connecting rural communities in Vikramshila, Nalanda, and Rajgir with green tourism and cultural exchanges.',
     subtitleHi: 'विक्रमशिला, नालंदा और राजगीर के ग्रामीण समुदायों को हरित पर्यटन और सांस्कृतिक आदान-प्रदान से जोड़ना।',
-    imageUrl: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1600&q=80',
+    imageUrl: '/hero-cultural-bihar.png',
     tag: 'Sustainable Living',
     tagHi: 'सतत ग्रामीण विकास',
     ctaText: 'View Initiatives',
