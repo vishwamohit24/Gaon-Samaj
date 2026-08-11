@@ -58,7 +58,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
       {/* 2. Hero Image Carousel */}
       <section className="relative w-full bg-stone-900 text-white overflow-hidden">
         {/* Carousel Slider Images */}
-        <div className="relative h-[380px] sm:h-[460px] lg:h-[540px] w-full overflow-hidden">
+        <div className="relative h-[300px] sm:h-[460px] lg:h-[540px] w-full overflow-hidden bg-stone-950">
           {HERO_SLIDES.map((slide, idx) => (
             <div
               key={slide.id}
@@ -70,7 +70,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                 src={slide.imageUrl}
                 alt={isHindi ? slide.titleHi : slide.title}
                 referrerPolicy="no-referrer"
-                className="w-full h-full object-cover object-center transform scale-105 transition-transform duration-7000"
+                className="w-full h-full object-contain sm:object-cover object-center transform sm:scale-105 transition-transform duration-7000"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-stone-900/40 to-transparent"></div>
             </div>
