@@ -58,7 +58,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
       {/* 2. Hero Image Carousel */}
       <section className="relative w-full bg-stone-900 text-white overflow-hidden">
         {/* Carousel Slider Images */}
-        <div className="relative h-[300px] sm:h-[460px] lg:h-[540px] w-full overflow-hidden bg-stone-950">
+        <div className="relative aspect-[1200/630] sm:aspect-auto sm:h-[460px] lg:h-[540px] w-full overflow-hidden bg-stone-950">
           {HERO_SLIDES.map((slide, idx) => (
             <div
               key={slide.id}
@@ -70,7 +70,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                 src={slide.imageUrl}
                 alt={isHindi ? slide.titleHi : slide.title}
                 referrerPolicy="no-referrer"
-                className="w-full h-full object-contain sm:object-cover object-center transform sm:scale-105 transition-transform duration-7000"
+                className="w-full h-full object-cover object-center transform sm:scale-105 transition-transform duration-7000"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-stone-900/40 to-transparent"></div>
             </div>
@@ -93,21 +93,21 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
           </button>
         </div>
 
-        {/* Hero Overlay Banner Box */}
-        <div className="absolute bottom-0 inset-x-0 z-20 pb-8 pt-16 bg-gradient-to-t from-stone-950/60 to-transparent px-6 sm:px-12 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6">
-          <div className="flex items-center gap-4">
+        {/* Hero Overlay Banner Box - Attached below on mobile, overlay on desktop */}
+        <div className="relative sm:absolute sm:bottom-0 sm:inset-x-0 z-20 pb-4 pt-4 sm:pb-8 sm:pt-16 bg-stone-900 sm:bg-transparent sm:bg-gradient-to-t sm:from-stone-950/60 sm:to-transparent px-4 sm:px-12 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 border-b-4 border-amber-500 sm:border-0">
+          <div className="flex flex-wrap items-center gap-3">
             <button
               onClick={() => {
                 setActiveTab('projects');
                 window.scrollTo(0, 0);
               }}
-              className="bg-amber-400 hover:bg-amber-500 text-amber-950 font-extrabold px-7 py-2.5 rounded-lg shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 border border-amber-500"
+              className="bg-amber-400 hover:bg-amber-500 text-amber-950 font-extrabold px-5 sm:px-7 py-2 sm:py-2.5 rounded-lg shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 border border-amber-500 text-sm sm:text-base"
             >
               {isHindi ? activeSlide.ctaTextHi : activeSlide.ctaText}
             </button>
             <button
               onClick={onOpenDonate}
-              className="bg-stone-800/80 hover:bg-stone-800 text-amber-300 border border-amber-400/40 font-bold px-6 py-2.5 rounded-lg transition-all shadow-md"
+              className="bg-stone-800/80 hover:bg-stone-800 text-amber-300 border border-amber-400/40 font-bold px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg transition-all shadow-md text-sm sm:text-base"
             >
               {t('supportCause')}
             </button>
