@@ -17,22 +17,40 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
   onOpenDonate,
   onSelectStory,
 }) => {
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [selectedDirector, setSelectedDirector] = useState<BilingualDirector | null>(null);
   const { t, isHindi } = useLanguage();
 
-  // Auto-advance hero carousel
+  // Typewriter Effect State
+  const typewriterPhrases = isHindi 
+    ? ["हमारे सपनों का बिहार", "एक सशक्त बिहार", "एक समृद्ध बिहार"] 
+    : ["a Bihar of Our Dream", "a Stronger Bihar", "a Developed Bihar"];
+  const [typewriterText, setTypewriterText] = useState('');
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
-    }, 5500);
-    return () => clearInterval(interval);
-  }, []);
+    const currentPhrase = typewriterPhrases[phraseIndex];
+    let timeout: NodeJS.Timeout;
 
-  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
-  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
+    if (isDeleting) {
+      timeout = setTimeout(() => {
+        setTypewriterText(currentPhrase.substring(0, typewriterText.length - 1));
+        if (typewriterText.length === 0) {
+          setIsDeleting(false);
+          setPhraseIndex((prev) => (prev + 1) % typewriterPhrases.length);
+        }
+      }, 50);
+    } else {
+      timeout = setTimeout(() => {
+        setTypewriterText(currentPhrase.substring(0, typewriterText.length + 1));
+        if (typewriterText.length === currentPhrase.length) {
+          timeout = setTimeout(() => setIsDeleting(true), 2500);
+        }
+      }, 100);
+    }
+    return () => clearTimeout(timeout);
+  }, [typewriterText, isDeleting, phraseIndex, isHindi, typewriterPhrases]);
 
-  // Helper to render icon for Focus Areas
   const renderFocusIcon = (iconName: string) => {
     switch (iconName) {
       case 'UserCheck': return <UserCheck className="w-8 h-8 text-amber-900" />;
@@ -47,86 +65,85 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
     }
   };
 
-  const activeSlide = HERO_SLIDES[currentSlide];
-
   return (
     <div className="w-full bg-amber-50/30">
 
       {/* 1. Traditional Mandala Accent Header Band */}
       <MandalaHeaderPattern />
 
-      {/* 2. Hero Image Carousel */}
-      <section className="relative w-full bg-stone-900 text-white overflow-hidden">
-        {/* Carousel Slider Images */}
-        <div className="relative aspect-[1200/630] sm:aspect-auto sm:h-[460px] lg:h-[540px] w-full overflow-hidden bg-stone-950">
-          {HERO_SLIDES.map((slide, idx) => (
-            <div
-              key={slide.id}
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                idx === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
-              }`}
-            >
-              <img
-                src={slide.imageUrl}
-                alt={isHindi ? slide.titleHi : slide.title}
-                referrerPolicy="no-referrer"
-                className="w-full h-full object-cover object-center transform sm:scale-105 transition-transform duration-7000"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-stone-900/40 to-transparent"></div>
+      {/* 2. New Hero Section with Typewriter */}
+      <section className="relative w-full bg-[#FCFAEF] overflow-hidden pt-12 pb-16 lg:pt-24 lg:pb-32 px-4 sm:px-8 lg:px-16 flex flex-col lg:flex-row items-center justify-between min-h-[600px] gap-12 lg:gap-8">
+        
+        {/* Left Column: Text & CTA */}
+        <div className="flex-1 max-w-2xl z-10 text-center lg:text-left mt-8 lg:mt-0">
+          <h1 className="text-4xl sm:text-5xl lg:text-[4.5rem] leading-[1.1] font-black text-stone-900 tracking-tight mb-6">
+            <span className="block mb-2">{isHindi ? "आइए बनाएं" : "Let's make"}</span>
+            <div className="relative inline-block">
+              <span className="text-stone-900 relative z-10 min-h-[60px] inline-block">{typewriterText}</span>
+              <span className="animate-pulse">|</span>
+              <div className="absolute bottom-1 left-0 w-full h-4 sm:h-5 bg-amber-400/80 -z-10 -rotate-1 rounded-sm transform origin-left"></div>
             </div>
-          ))}
-
-          {/* Carousel Arrows */}
-          <button
-            onClick={prevSlide}
-            aria-label="Previous Slide"
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/30 backdrop-blur-md hover:bg-amber-400 hover:text-amber-950 text-white flex items-center justify-center transition-all shadow-md"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
-          <button
-            onClick={nextSlide}
-            aria-label="Next Slide"
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/30 backdrop-blur-md hover:bg-amber-400 hover:text-amber-950 text-white flex items-center justify-center transition-all shadow-md"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
-        </div>
-
-        {/* Hero Overlay Banner Box - Attached below on mobile, overlay on desktop */}
-        <div className="relative sm:absolute sm:bottom-0 sm:inset-x-0 z-20 pb-4 pt-4 sm:pb-8 sm:pt-16 bg-stone-900 sm:bg-transparent sm:bg-gradient-to-t sm:from-stone-950/60 sm:to-transparent px-4 sm:px-12 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 border-b-4 border-amber-500 sm:border-0">
-          <div className="flex flex-wrap items-center gap-3">
+          </h1>
+          
+          <p className="text-stone-600 text-lg sm:text-xl max-w-xl font-medium mb-10 mx-auto lg:mx-0">
+            {isHindi 
+              ? "बिहार के गांवों, कस्बों और शहरों में बुनियादी ढांचे, शिक्षा, स्वास्थ्य सेवा और रोजगार के लिए काम करना।"
+              : "Working for infrastructure, education, healthcare and employment across villages, towns and cities of Bihar."}
+          </p>
+          
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6">
             <button
               onClick={() => {
                 setActiveTab('projects');
                 window.scrollTo(0, 0);
               }}
-              className="bg-amber-400 hover:bg-amber-500 text-amber-950 font-extrabold px-5 sm:px-7 py-2 sm:py-2.5 rounded-lg shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 border border-amber-500 text-sm sm:text-base"
+              className="bg-stone-950 hover:bg-stone-800 text-white font-extrabold px-8 py-3.5 rounded-lg shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-1 text-base sm:text-lg tracking-wide"
             >
-              {isHindi ? activeSlide.ctaTextHi : activeSlide.ctaText}
+              {isHindi ? "अभी जुड़ें" : "Join now"}
             </button>
             <button
-              onClick={onOpenDonate}
-              className="bg-stone-800/80 hover:bg-stone-800 text-amber-300 border border-amber-400/40 font-bold px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg transition-all shadow-md text-sm sm:text-base"
+              onClick={() => {
+                setActiveTab('impact');
+                window.scrollTo(0, 0);
+              }}
+              className="text-stone-900 font-extrabold hover:text-amber-600 transition-colors flex items-center gap-2 text-base sm:text-lg"
             >
-              {t('supportCause')}
+              {isHindi ? "और जानें" : "Discover"} <ArrowRight className="w-5 h-5" />
             </button>
           </div>
+        </div>
 
-          {/* Carousel Dots */}
-          <div className="flex space-x-2 pb-2">
-            {HERO_SLIDES.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setCurrentSlide(idx)}
-                className={`w-3 h-3 rounded-full transition-all ${
-                  idx === currentSlide ? 'bg-amber-400 w-8' : 'bg-white/40 hover:bg-white/70 shadow-sm'
-                }`}
-                aria-label={`Go to slide ${idx + 1}`}
-              />
-            ))}
+        {/* Right Column: Masked Image & Stats */}
+        <div className="flex-1 relative w-full max-w-xl mx-auto lg:mx-0">
+          {/* Decorative Brush Stroke Background */}
+          <div className="absolute top-10 -left-12 w-48 h-12 bg-[#8bc34a] opacity-80 rounded-[100%] blur-[2px] transform -rotate-12 z-0 hidden lg:block" style={{ borderRadius: "50% 20% / 10% 40%", clipPath: "polygon(0 10%, 100% 0, 95% 100%, 5% 90%)" }}></div>
+          
+          {/* Main Map Mask Container */}
+          <div className="relative w-full aspect-square z-10" style={{
+            // A simplified blob shape resembling Bihar's rough outline for the mask, or using a very organic border-radius as a fallback map-like shape.
+            clipPath: "polygon(22% 8%, 45% 2%, 67% 6%, 86% 15%, 97% 33%, 99% 55%, 90% 77%, 74% 94%, 50% 98%, 24% 90%, 9% 75%, 2% 51%, 6% 26%)",
+          }}>
+            <img 
+              src="/hero-healthy-bihar.png" 
+              alt="Kid smiling in Bihar" 
+              className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-1000"
+            />
+          </div>
+
+          {/* Map Shadow/Accent Behind */}
+          <div className="absolute inset-0 bg-[#e6e2d3] -z-10 translate-x-4 translate-y-6" style={{
+            clipPath: "polygon(22% 8%, 45% 2%, 67% 6%, 86% 15%, 97% 33%, 99% 55%, 90% 77%, 74% 94%, 50% 98%, 24% 90%, 9% 75%, 2% 51%, 6% 26%)",
+          }}></div>
+
+          {/* Stats Badge */}
+          <div className="absolute -bottom-8 -right-4 lg:-right-12 z-20 flex flex-col items-center">
+            {/* Decorative yellow brush stroke under stats */}
+            <div className="absolute inset-0 bg-amber-400 w-full h-12 top-1/2 -z-10 transform -rotate-6" style={{ clipPath: "polygon(0 20%, 100% 0, 90% 100%, 10% 80%)" }}></div>
+            <span className="text-5xl lg:text-6xl font-black text-stone-900 font-anton">38</span>
+            <span className="text-xs font-bold text-stone-800 uppercase tracking-widest mt-1">districts<br/>connected</span>
           </div>
         </div>
+        
       </section>
 
       {/* 3. Director's Desk Section */}
