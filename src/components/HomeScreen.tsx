@@ -30,8 +30,8 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
 
   // Map Images Fading State
   const mapImages = [
-    { src: '/hero-healthy-bihar.png', text: 'Healthy Bihar', textHi: 'स्वस्थ बिहार' },
-    { src: '/hero-empowered-bihar.png', text: 'Empowered Bihar', textHi: 'सशक्त बिहार' },
+    { src: '/hero-healthy-bihar.jpg', text: 'Healthy Bihar', textHi: 'स्वस्थ बिहार' },
+    { src: '/hero-empowered-bihar.jpg', text: 'Empowered Bihar', textHi: 'सशक्त बिहार' },
     { src: '/hero-viksit-bihar.jpg', text: 'Viksit Bihar', textHi: 'विकसित बिहार' },
   ];
   const [mapImageIndex, setMapImageIndex] = useState(0);
@@ -219,6 +219,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                   src={dir.imageUrl}
                   alt={dir.name}
                   referrerPolicy="no-referrer"
+                  loading="lazy"
                   className="w-28 h-28 object-cover rounded-full"
                 />
               </CircularMadhubaniFrame>
@@ -403,6 +404,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                       src={story.imageUrl}
                       alt={isHindi ? story.titleHi || story.title : story.title}
                       referrerPolicy="no-referrer"
+                      loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <span className="absolute top-3 left-3 bg-amber-400 text-amber-950 text-xs font-extrabold px-3 py-1 rounded-full shadow-sm">
