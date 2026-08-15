@@ -28,6 +28,21 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
+  // Map Images Fading State
+  const mapImages = [
+    { src: '/hero-healthy-bihar.png', text: 'Healthy Bihar', textHi: 'स्वस्थ बिहार' },
+    { src: '/hero-empowered-bihar.png', text: 'Empowered Bihar', textHi: 'सशक्त बिहार' },
+    { src: '/hero-viksit-bihar.jpg', text: 'Viksit Bihar', textHi: 'विकसित बिहार' },
+  ];
+  const [mapImageIndex, setMapImageIndex] = useState(0);
+
+  useEffect(() => {
+    const mapInterval = setInterval(() => {
+      setMapImageIndex((prev) => (prev + 1) % mapImages.length);
+    }, 4500);
+    return () => clearInterval(mapInterval);
+  }, []);
+
   useEffect(() => {
     const currentPhrase = typewriterPhrases[phraseIndex];
     let timeout: NodeJS.Timeout;
@@ -97,7 +112,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                 setActiveTab('projects');
                 window.scrollTo(0, 0);
               }}
-              className="bg-stone-950 hover:bg-stone-800 text-white font-extrabold px-8 py-3.5 rounded-lg shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-1 text-base sm:text-lg tracking-wide"
+              className="bg-[#ea580c] hover:bg-[#c2410c] text-white font-extrabold px-8 py-3.5 rounded-lg shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-1 text-base sm:text-lg tracking-wide border border-transparent hover:border-[#9a3412]"
             >
               {isHindi ? "अभी जुड़ें" : "Join now"}
             </button>
@@ -106,41 +121,81 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                 setActiveTab('impact');
                 window.scrollTo(0, 0);
               }}
-              className="text-stone-900 font-extrabold hover:text-amber-600 transition-colors flex items-center gap-2 text-base sm:text-lg"
+              className="text-[#ea580c] font-extrabold hover:text-[#c2410c] transition-colors flex items-center gap-2 text-base sm:text-lg group"
             >
-              {isHindi ? "और जानें" : "Discover"} <ArrowRight className="w-5 h-5" />
+              {isHindi ? "और जानें" : "Discover"} 
+              <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
         </div>
 
         {/* Right Column: Masked Image & Stats */}
-        <div className="flex-1 relative w-full max-w-xl mx-auto lg:mx-0">
+        <div className="flex-1 relative w-full max-w-xl mx-auto lg:mx-0 min-h-[400px]">
           {/* Decorative Brush Stroke Background */}
-          <div className="absolute top-10 -left-12 w-48 h-12 bg-[#8bc34a] opacity-80 rounded-[100%] blur-[2px] transform -rotate-12 z-0 hidden lg:block" style={{ borderRadius: "50% 20% / 10% 40%", clipPath: "polygon(0 10%, 100% 0, 95% 100%, 5% 90%)" }}></div>
+          <div className="absolute top-4 -left-8 w-48 h-12 bg-[#8bc34a] opacity-80 rounded-[100%] blur-[2px] transform -rotate-12 z-0 hidden lg:block" style={{ borderRadius: "50% 20% / 10% 40%", clipPath: "polygon(0 10%, 100% 0, 95% 100%, 5% 90%)" }}></div>
           
-          {/* Main Map Mask Container */}
-          <div className="relative w-full aspect-square z-10" style={{
-            // A simplified blob shape resembling Bihar's rough outline for the mask, or using a very organic border-radius as a fallback map-like shape.
-            clipPath: "polygon(22% 8%, 45% 2%, 67% 6%, 86% 15%, 97% 33%, 99% 55%, 90% 77%, 74% 94%, 50% 98%, 24% 90%, 9% 75%, 2% 51%, 6% 26%)",
-          }}>
-            <img 
-              src="/hero-healthy-bihar.png" 
-              alt="Kid smiling in Bihar" 
-              className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-1000"
-            />
-          </div>
-
           {/* Map Shadow/Accent Behind */}
           <div className="absolute inset-0 bg-[#e6e2d3] -z-10 translate-x-4 translate-y-6" style={{
-            clipPath: "polygon(22% 8%, 45% 2%, 67% 6%, 86% 15%, 97% 33%, 99% 55%, 90% 77%, 74% 94%, 50% 98%, 24% 90%, 9% 75%, 2% 51%, 6% 26%)",
+            WebkitMaskImage: 'url(/bihar-map.svg)',
+            maskImage: 'url(/bihar-map.svg)',
+            WebkitMaskSize: 'contain',
+            maskSize: 'contain',
+            WebkitMaskRepeat: 'no-repeat',
+            maskRepeat: 'no-repeat',
+            WebkitMaskPosition: 'center',
+            maskPosition: 'center',
           }}></div>
 
+          {/* Main Map Mask Container with Fully Embedded Images */}
+          <div className="relative w-full aspect-[4/3] z-10" style={{
+            WebkitMaskImage: 'url(/bihar-map.svg)',
+            maskImage: 'url(/bihar-map.svg)',
+            WebkitMaskSize: 'contain',
+            maskSize: 'contain',
+            WebkitMaskRepeat: 'no-repeat',
+            maskRepeat: 'no-repeat',
+            WebkitMaskPosition: 'center',
+            maskPosition: 'center',
+          }}>
+            {mapImages.map((img, idx) => (
+              <div 
+                key={idx}
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === mapImageIndex ? 'opacity-100' : 'opacity-0'}`}
+              >
+                <img 
+                  src={img.src} 
+                  alt={isHindi ? img.textHi : img.text} 
+                  className="w-full h-full object-cover transform scale-110"
+                />
+                <div className="absolute inset-0 bg-stone-900/20"></div>
+              </div>
+            ))}
+          </div>
+
+          {/* Floating Popping Text Effect Overlay */}
+          <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
+            {mapImages.map((img, idx) => (
+              <div 
+                key={idx}
+                className={`absolute transition-all duration-700 ease-out transform ${
+                  idx === mapImageIndex 
+                    ? 'opacity-100 translate-y-0 scale-100' 
+                    : 'opacity-0 translate-y-8 scale-90'
+                }`}
+              >
+                <span className="text-white text-3xl sm:text-5xl font-black tracking-wider drop-shadow-[0_4px_4px_rgba(0,0,0,0.6)] text-center font-anton block" style={{ textShadow: '2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000' }}>
+                  {isHindi ? img.textHi : img.text}
+                </span>
+              </div>
+            ))}
+          </div>
+
           {/* Stats Badge */}
-          <div className="absolute -bottom-8 -right-4 lg:-right-12 z-20 flex flex-col items-center">
+          <div className="absolute -bottom-4 right-0 lg:-right-8 z-30 flex flex-col items-center">
             {/* Decorative yellow brush stroke under stats */}
             <div className="absolute inset-0 bg-amber-400 w-full h-12 top-1/2 -z-10 transform -rotate-6" style={{ clipPath: "polygon(0 20%, 100% 0, 90% 100%, 10% 80%)" }}></div>
-            <span className="text-5xl lg:text-6xl font-black text-stone-900 font-anton">38</span>
-            <span className="text-xs font-bold text-stone-800 uppercase tracking-widest mt-1">districts<br/>connected</span>
+            <span className="text-5xl lg:text-6xl font-black text-stone-900 font-anton drop-shadow-md">38</span>
+            <span className="text-xs font-bold text-stone-900 uppercase tracking-widest mt-1">districts<br/>connected</span>
           </div>
         </div>
         
