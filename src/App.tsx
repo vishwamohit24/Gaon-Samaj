@@ -1,22 +1,34 @@
 import { useState } from 'react';
-import { ScreenTab, Project, Story } from './types';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { Project, Story } from './types';
 import { LanguageProvider } from './context/LanguageContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { HomeScreen } from './components/HomeScreen';
 import { AboutScreen } from './components/AboutScreen';
 import { ProjectsScreen } from './components/ProjectsScreen';
-import { ImpactScreen } from './components/ImpactScreen';
 import { StoriesScreen } from './components/StoriesScreen';
 import { MediaScreen } from './components/MediaScreen';
-import { GetInvolvedScreen } from './components/GetInvolvedScreen';
 import { ContactScreen } from './components/ContactScreen';
 import { ProjectDetailModal } from './components/ProjectDetailModal';
 import { StoryDetailModal } from './components/StoryDetailModal';
 import { DonationModal } from './components/DonationModal';
+import { PrivacyPolicy } from './components/PrivacyPolicy';
+import { TermsOfUse } from './components/TermsOfUse';
+import { NotFoundScreen } from './components/NotFoundScreen';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  
+  // This side effect runs every time the path changes
+  useState(() => {
+    window.scrollTo(0, 0);
+  });
+  
+  return null;
+}
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<ScreenTab>('home');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [selectedStory, setSelectedStory] = useState<Story | null>(null);
   const [isDonateOpen, setIsDonateOpen] = useState<boolean>(false);
@@ -31,86 +43,96 @@ export default function App() {
 
   return (
     <LanguageProvider>
-      <div className="min-h-screen bg-stone-50 font-sans text-stone-900 flex flex-col justify-between selection:bg-amber-300 selection:text-amber-950">
-        
-        {/* Top Header Navbar */}
-        <Navbar
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-          onOpenDonate={() => handleOpenDonate(1500)}
-        />
+      <BrowserRouter>
+        <ScrollToTop />
+        <div className="min-h-screen bg-stone-50 font-sans text-stone-900 flex flex-col justify-between selection:bg-amber-300 selection:text-amber-950">
+          
+          {/* Top Header Navbar */}
+          <Navbar
+            onOpenDonate={() => handleOpenDonate(1500)}
+          />
 
-        {/* Main View Content Switcher */}
-        <main className="flex-1">
-          {activeTab === 'home' && (
-            <HomeScreen
-              setActiveTab={setActiveTab}
-              onOpenDonate={() => handleOpenDonate(1500)}
-              onSelectProject={(proj) => setSelectedProject(proj)}
-              onSelectStory={(story) => setSelectedStory(story)}
-            />
-          )}
+          {/* Main View Content Switcher */}
+          <main className="flex-1 flex flex-col">
+            <Routes>
+              <Route path="/" element={
+                <HomeScreen
+                  onOpenDonate={() => handleOpenDonate(1500)}
+                  onSelectProject={(proj) => setSelectedProject(proj)}
+                  onSelectStory={(story) => setSelectedStory(story)}
+                />
+              } />
+              
+              <Route path="/about" element={
+                <AboutScreen
+                  onOpenDonate={() => handleOpenDonate(1500)}
+                />
+              } />
 
-          {activeTab === 'about' && (
-            <AboutScreen
-              setActiveTab={setActiveTab}
-              onOpenDonate={() => handleOpenDonate(1500)}
-            />
-          )}
+              <Route path="/projects" element={
+                <ProjectsScreen
+                  onSelectProject={(proj) => setSelectedProject(proj)}
+                  onOpenDonate={() => handleOpenDonate(1500)}
+                />
+              } />
+              
+              <Route path="/focus" element={
+                <ProjectsScreen
+                  onSelectProject={(proj) => setSelectedProject(proj)}
+                  onOpenDonate={() => handleOpenDonate(1500)}
+                />
+              } />
 
-          {(activeTab === 'projects' || activeTab === 'focus') && (
-            <ProjectsScreen
-              onSelectProject={(proj) => setSelectedProject(proj)}
-              onOpenDonate={() => handleOpenDonate(1500)}
-              setActiveTab={setActiveTab}
-            />
-          )}
+              <Route path="/stories" element={
+                <StoriesScreen
+                  onSelectStory={(story) => setSelectedStory(story)}
+                  onOpenDonate={() => handleOpenDonate(1500)}
+                />
+              } />
 
-          {activeTab === 'stories' && (
-            <StoriesScreen
-              onSelectStory={(story) => setSelectedStory(story)}
-              setActiveTab={setActiveTab}
-              onOpenDonate={() => handleOpenDonate(1500)}
-            />
-          )}
+              <Route path="/media" element={
+                <MediaScreen />
+              } />
 
-          {activeTab === 'media' && (
-            <MediaScreen />
-          )}
+              <Route path="/contact" element={
+                <ContactScreen 
+                  onOpenDonate={(amt) => handleOpenDonate(amt)} 
+                />
+              } />
 
-          {activeTab === 'contact' && (
-            <ContactScreen 
-              onOpenDonate={(amt) => handleOpenDonate(amt)} 
-              setActiveTab={setActiveTab} 
-            />
-          )}
-        </main>
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-of-use" element={<TermsOfUse />} />
 
-        {/* Global Footer */}
-        <Footer
-          setActiveTab={setActiveTab}
-          onOpenDonate={() => handleOpenDonate(1500)}
-        />
+              {/* 404 Route */}
+              <Route path="*" element={<NotFoundScreen />} />
+            </Routes>
+          </main>
 
-        {/* Modals */}
-        <ProjectDetailModal
-          project={selectedProject}
-          onClose={() => setSelectedProject(null)}
-          onOpenDonate={(amt) => handleOpenDonate(amt)}
-        />
+          {/* Global Footer */}
+          <Footer
+            onOpenDonate={() => handleOpenDonate(1500)}
+          />
 
-        <StoryDetailModal
-          story={selectedStory}
-          onClose={() => setSelectedStory(null)}
-        />
+          {/* Modals */}
+          <ProjectDetailModal
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
+            onOpenDonate={(amt) => handleOpenDonate(amt)}
+          />
 
-        <DonationModal
-          isOpen={isDonateOpen}
-          onClose={() => setIsDonateOpen(false)}
-          initialAmount={donateAmount}
-        />
+          <StoryDetailModal
+            story={selectedStory}
+            onClose={() => setSelectedStory(null)}
+          />
 
-      </div>
+          <DonationModal
+            isOpen={isDonateOpen}
+            onClose={() => setIsDonateOpen(false)}
+            initialAmount={donateAmount}
+          />
+
+        </div>
+      </BrowserRouter>
     </LanguageProvider>
   );
 }

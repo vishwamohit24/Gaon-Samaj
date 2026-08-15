@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import { ScreenTab } from '../types';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { Phone, Mail, Globe, MapPin, Facebook, Instagram, Linkedin, Youtube, Award, CheckCircle2, Heart, Send } from 'lucide-react';
 
 interface FooterProps {
-  setActiveTab: (tab: ScreenTab) => void;
   onOpenDonate: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenDonate }) => {
+export const Footer: React.FC<FooterProps> = ({ onOpenDonate }) => {
   const [subscribedEmail, setSubscribedEmail] = useState('');
   const [subscribedSuccess, setSubscribedSuccess] = useState(false);
   const { t, isHindi } = useLanguage();
@@ -51,34 +50,34 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenDonate }) =>
             <h3 className="font-bold text-lg text-amber-950 tracking-tight">{t('quickLinks')}</h3>
             <ul className="space-y-2 text-sm text-amber-900 font-medium">
               <li>
-                <button onClick={() => { setActiveTab('home'); window.scrollTo(0,0); }} className="hover:underline hover:text-amber-950">
+                <Link to="/" className="hover:underline hover:text-amber-950">
                   {t('navHome')}
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => { setActiveTab('about'); window.scrollTo(0,0); }} className="hover:underline hover:text-amber-950">
+                <Link to="/about" className="hover:underline hover:text-amber-950">
                   {t('navAbout')}
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => { setActiveTab('projects'); window.scrollTo(0,0); }} className="hover:underline hover:text-amber-950">
+                <Link to="/projects" className="hover:underline hover:text-amber-950">
                   {t('navProjects')}
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => { setActiveTab('focus'); window.scrollTo(0,0); }} className="hover:underline hover:text-amber-950">
+                <Link to="/focus" className="hover:underline hover:text-amber-950">
                   {t('navFocus')}
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => { setActiveTab('stories'); window.scrollTo(0,0); }} className="hover:underline hover:text-amber-950">
+                <Link to="/stories" className="hover:underline hover:text-amber-950">
                   {t('navStories')}
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => { setActiveTab('contact'); window.scrollTo(0,0); }} className="hover:underline hover:text-amber-950">
+                <Link to="/contact" className="hover:underline hover:text-amber-950">
                   {t('navGetInvolved')}
-                </button>
+                </Link>
               </li>
             </ul>
           </div>
@@ -181,13 +180,13 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenDonate }) =>
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
           <p>© 2026 Gaon Samaj (Bihar Social Initiative). gaonsamaj.com. All Rights Reserved.</p>
           <div className="flex items-center space-x-4 font-semibold">
-            <button onClick={() => { setActiveTab('about'); window.scrollTo(0,0); }} className="hover:text-amber-300 transition-colors">
+            <Link to="/privacy-policy" className="hover:text-amber-300 transition-colors">
               {isHindi ? 'गोपनीयता नीति' : 'Privacy Policy'}
-            </button>
+            </Link>
             <span>•</span>
-            <button onClick={() => { setActiveTab('contact'); window.scrollTo(0,0); }} className="hover:text-amber-300 transition-colors">
+            <Link to="/terms-of-use" className="hover:text-amber-300 transition-colors">
               {isHindi ? 'नियम व शर्तें' : 'Terms of Use'}
-            </button>
+            </Link>
             <span>•</span>
             <button onClick={onOpenDonate} className="text-amber-400 font-bold hover:underline">
               {t('supportCause')}

@@ -7,7 +7,6 @@ import { MapPin, Users, Calendar, ArrowUpRight, Sparkles } from 'lucide-react';
 interface ProjectsScreenProps {
   onSelectProject: (project: Project) => void;
   onOpenDonate: () => void;
-  setActiveTab: (tab: ScreenTab) => void;
 }
 
 export const ProjectsScreen: React.FC<ProjectsScreenProps> = ({

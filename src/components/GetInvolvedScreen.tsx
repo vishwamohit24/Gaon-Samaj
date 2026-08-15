@@ -5,7 +5,6 @@ import { CheckCircle2, Star, ShieldCheck, Heart, Building2, Send } from 'lucide-
 
 interface GetInvolvedScreenProps {
   onOpenDonate: (customAmount?: number) => void;
-  setActiveTab: (tab: ScreenTab) => void;
 }
 
 export const GetInvolvedScreen: React.FC<GetInvolvedScreenProps> = ({ onOpenDonate }) => {

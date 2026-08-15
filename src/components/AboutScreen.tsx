@@ -6,11 +6,10 @@ import { useLanguage } from '../context/LanguageContext';
 import { Shield, Target, Eye, Award, CheckCircle2, Heart } from 'lucide-react';
 
 interface AboutScreenProps {
-  setActiveTab: (tab: ScreenTab) => void;
   onOpenDonate: () => void;
 }
 
-export const AboutScreen: React.FC<AboutScreenProps> = ({ setActiveTab, onOpenDonate }) => {
+export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenDonate }) => {
   const { t, isHindi } = useLanguage();
 
   return (

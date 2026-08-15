@@ -6,10 +6,9 @@ import { ScreenTab } from '../types';
 
 interface ContactScreenProps {
   onOpenDonate: (customAmount?: number) => void;
-  setActiveTab: (tab: ScreenTab) => void;
 }
 
-export const ContactScreen: React.FC<ContactScreenProps> = ({ onOpenDonate, setActiveTab }) => {
+export const ContactScreen: React.FC<ContactScreenProps> = ({ onOpenDonate }) => {
   const [activeMainTab, setActiveMainTab] = useState<'contact' | 'involved'>('contact');
   const [formData, setFormData] = useState({
     name: '',
@@ -58,7 +57,7 @@ export const ContactScreen: React.FC<ContactScreenProps> = ({ onOpenDonate, setA
       </div>
 
       {activeMainTab === 'involved' ? (
-        <GetInvolvedScreen onOpenDonate={onOpenDonate} setActiveTab={setActiveTab} />
+        <GetInvolvedScreen onOpenDonate={onOpenDonate} />
       ) : (
         <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
         

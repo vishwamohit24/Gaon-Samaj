@@ -1,16 +1,16 @@
 import React from 'react';
-import { ScreenTab } from '../types';
+import { useNavigate } from 'react-router-dom';
 import { ImpactGallery } from './ImpactGallery';
 import { useLanguage } from '../context/LanguageContext';
 import { MandalaHeaderPattern } from './TraditionalPattern';
 import { Award, Heart, Users, MapPin, Sparkles, CheckCircle2 } from 'lucide-react';
 
 interface ImpactScreenProps {
-  setActiveTab: (tab: ScreenTab) => void;
   onOpenDonate: () => void;
 }
 
-export const ImpactScreen: React.FC<ImpactScreenProps> = ({ setActiveTab, onOpenDonate }) => {
+export const ImpactScreen: React.FC<ImpactScreenProps> = ({ onOpenDonate }) => {
+  const navigate = useNavigate();
   const { t, isHindi } = useLanguage();
 
   return (
@@ -50,7 +50,7 @@ export const ImpactScreen: React.FC<ImpactScreenProps> = ({ setActiveTab, onOpen
             </button>
 
             <button
-              onClick={() => setActiveTab('projects')}
+              onClick={() => navigate('/projects')}
               className="bg-white/10 hover:bg-white/20 text-white border-2 border-white/50 font-comic font-bold text-sm px-6 py-3.5 rounded-xl transition-all flex items-center gap-2"
             >
               <Award className="w-4 h-4 text-[#fdba74]" />

@@ -1,25 +1,24 @@
 import React, { useState } from 'react';
-import { ScreenTab } from '../types';
+import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { Menu, X, Heart, TreePine, Phone, Mail, Globe, Check, Facebook, Instagram, Youtube, Linkedin, Sparkles } from 'lucide-react';
 
 interface NavbarProps {
-  activeTab: ScreenTab;
-  setActiveTab: (tab: ScreenTab) => void;
   onOpenDonate: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenDonate }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onOpenDonate }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { lang, setLang, toggleLang, t, isHindi } = useLanguage();
+  const location = useLocation();
 
-  const navItems: { id: ScreenTab; labelKey: string }[] = [
-    { id: 'home', labelKey: 'navHome' },
-    { id: 'about', labelKey: 'navAbout' },
-    { id: 'projects', labelKey: 'navProjects' },
-    { id: 'stories', labelKey: 'navStories' },
-    { id: 'media', labelKey: 'navMedia' },
-    { id: 'contact', labelKey: 'navContact' },
+  const navItems: { id: string; labelKey: string }[] = [
+    { id: '/', labelKey: 'navHome' },
+    { id: '/about', labelKey: 'navAbout' },
+    { id: '/projects', labelKey: 'navProjects' },
+    { id: '/stories', labelKey: 'navStories' },
+    { id: '/media', labelKey: 'navMedia' },
+    { id: '/contact', labelKey: 'navContact' },
   ];
 
   return (
@@ -71,15 +70,12 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenD
 
             <span className="text-amber-700">|</span>
 
-            <button
-              onClick={() => {
-                setActiveTab('contact');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
+            <Link
+              to="/contact"
               className="hover:underline font-bold text-amber-950"
             >
               {t('supportUs')}
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -89,11 +85,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenD
         <div className="flex justify-between items-center h-20">
           
           {/* Logo Section */}
-          <div
-            onClick={() => {
-              setActiveTab('home');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
+          <Link
+            to="/"
             className="flex items-center gap-3 cursor-pointer group"
           >
             <div className="flex flex-col">
@@ -101,19 +94,16 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenD
                 {t('orgName')}
               </span>
             </div>
-          </div>
+          </Link>
 
           {/* Desktop Navigation Links */}
           <nav className="hidden xl:flex items-center space-x-1 lg:space-x-2">
             {navItems.map((item) => {
-              const isActive = activeTab === item.id;
+              const isActive = location.pathname === item.id;
               return (
-                <button
+                <Link
                   key={item.id}
-                  onClick={() => {
-                    setActiveTab(item.id);
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
+                  to={item.id}
                   className={`px-3 py-2 text-xs lg:text-sm font-bold rounded-md transition-all duration-200 relative ${
                     isActive
                       ? 'text-amber-950 font-black bg-amber-100/80 border-b-2 border-amber-500 shadow-xs'
@@ -124,7 +114,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenD
                   {isActive && (
                     <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4 h-0.5 bg-amber-500 rounded-full"></span>
                   )}
-                </button>
+                </Link>
               );
             })}
           </nav>
@@ -186,21 +176,18 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenD
           
 
           {navItems.map((item) => (
-            <button
+            <Link
               key={item.id}
-              onClick={() => {
-                setActiveTab(item.id);
-                setMobileMenuOpen(false);
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              className={`w-full text-left px-4 py-3 text-sm font-bold rounded-lg transition-colors ${
-                activeTab === item.id
+              to={item.id}
+              onClick={() => setMobileMenuOpen(false)}
+              className={`block w-full text-left px-4 py-3 text-sm font-bold rounded-lg transition-colors ${
+                location.pathname === item.id
                   ? 'bg-amber-400 text-amber-950 font-extrabold'
                   : 'text-stone-700 hover:bg-amber-50 hover:text-amber-700'
               }`}
             >
               {t(item.labelKey)}
-            </button>
+            </Link>
           ))}
 
           <div className="pt-2">

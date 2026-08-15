@@ -8,11 +8,10 @@ import { ScreenTab } from '../types';
 
 interface StoriesScreenProps {
   onSelectStory: (story: Story) => void;
-  setActiveTab: (tab: ScreenTab) => void;
   onOpenDonate: () => void;
 }
 
-export const StoriesScreen: React.FC<StoriesScreenProps> = ({ onSelectStory, setActiveTab, onOpenDonate }) => {
+export const StoriesScreen: React.FC<StoriesScreenProps> = ({ onSelectStory, onOpenDonate }) => {
   const [activeMainTab, setActiveMainTab] = useState<'stories' | 'impact'>('stories');
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const { t, isHindi } = useLanguage();
@@ -55,7 +54,7 @@ export const StoriesScreen: React.FC<StoriesScreenProps> = ({ onSelectStory, set
       </div>
 
       {activeMainTab === 'impact' ? (
-        <ImpactScreen setActiveTab={setActiveTab} onOpenDonate={onOpenDonate} />
+        <ImpactScreen onOpenDonate={onOpenDonate} />
       ) : (
         <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         

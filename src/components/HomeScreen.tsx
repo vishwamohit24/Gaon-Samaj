@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ScreenTab, Director, Story, Project } from '../types';
 import { HERO_SLIDES, DIRECTORS, FOCUS_AREAS, IMPACT_METRICS, STORIES, BilingualDirector } from '../data/ngoData';
 import { MandalaHeaderPattern, CircularMadhubaniFrame, MadhubaniCardCorner } from './TraditionalPattern';
@@ -6,18 +7,17 @@ import { useLanguage } from '../context/LanguageContext';
 import { ChevronLeft, ChevronRight, UserCheck, HeartHandshake, MapPin, Landmark, Sprout, BookOpen, ShieldAlert, Lightbulb, Users, CheckCircle2, HandHeart, ArrowRight, Calendar, User, Instagram, Facebook, Twitter, Youtube } from 'lucide-react';
 
 interface HomeScreenProps {
-  setActiveTab: (tab: ScreenTab) => void;
   onOpenDonate: () => void;
   onSelectProject: (project: Project) => void;
   onSelectStory: (story: Story) => void;
 }
 
 export const HomeScreen: React.FC<HomeScreenProps> = ({
-  setActiveTab,
   onOpenDonate,
   onSelectStory,
 }) => {
   const [selectedDirector, setSelectedDirector] = useState<BilingualDirector | null>(null);
+  const navigate = useNavigate();
   const { t, isHindi } = useLanguage();
 
   // Typewriter Effect State
@@ -109,7 +109,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6">
             <button
               onClick={() => {
-                setActiveTab('projects');
+                navigate('/projects');
                 window.scrollTo(0, 0);
               }}
               className="bg-[#ea580c] hover:bg-[#c2410c] text-white font-extrabold px-8 py-3.5 rounded-lg shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-1 text-base sm:text-lg tracking-wide border border-transparent hover:border-[#9a3412]"
@@ -118,7 +118,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
             </button>
             <button
               onClick={() => {
-                setActiveTab('impact');
+                navigate('/projects');
                 window.scrollTo(0, 0);
               }}
               className="text-[#ea580c] font-extrabold hover:text-[#c2410c] transition-colors flex items-center gap-2 text-base sm:text-lg group"
@@ -269,7 +269,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
               <div
                 key={item.id}
                 onClick={() => {
-                  setActiveTab('projects');
+                  navigate('/projects');
                   window.scrollTo(0, 0);
                 }}
                 className="bg-amber-400 hover:bg-amber-400/90 text-stone-900 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all cursor-pointer transform hover:-translate-y-1 flex flex-col justify-between border border-amber-500/30 group relative overflow-hidden"
@@ -360,7 +360,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
         <div className="text-center mt-10">
           <button
             onClick={() => {
-              setActiveTab('impact');
+              navigate('/projects');
               window.scrollTo(0, 0);
             }}
             className="bg-[#064e3b] hover:bg-[#14532d] text-white font-extrabold px-8 py-3.5 rounded-xl shadow-lg transition-transform hover:scale-105 inline-flex items-center gap-2.5 text-sm border-2 border-[#ea580c]"
@@ -383,7 +383,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
             </div>
             <button
               onClick={() => {
-                setActiveTab('stories');
+                navigate('/stories');
                 window.scrollTo(0, 0);
               }}
               className="text-sm font-extrabold text-amber-800 hover:text-amber-950 hover:underline flex items-center gap-1"
