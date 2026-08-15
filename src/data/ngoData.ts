@@ -100,6 +100,20 @@ export const DIRECTORS: BilingualDirector[] = [
     quote: 'Empowerment begins at the grassroots. When we uplift our communities, we build a stronger Bihar.',
     quoteHi: 'सशक्तिकरण की शुरुआत जमीनी स्तर से होती है। जब हम अपने समुदायों का उत्थान करते हैं, तो हम एक मजबूत बिहार का निर्माण करते हैं।',
   },
+  {
+    id: 'dir-3',
+    name: 'Shri Sanjay Mayukh Ji',
+    title: 'Patron & Guide',
+    titleHi: 'संरक्षक एवं मार्गदर्शक',
+    bio: 'Member of the Bihar Legislative Council (MLC) and National Spokesperson for the BJP. Known for his grassroots experience and strategic role in Bihar.',
+    bioHi: 'बिहार विधान परिषद (एमएलसी) के सदस्य और भाजपा के राष्ट्रीय प्रवक्ता। अपने जमीनी अनुभव और बिहार में रणनीतिक भूमिका के लिए जाने जाते हैं।',
+    fullBio: 'Shri Sanjay Mayukh Ji is a prominent Indian politician, currently serving as a Member of the Bihar Legislative Council (MLC) and National Spokesperson for the Bharatiya Janata Party (BJP). He holds a PhD, M.A., and P.G. Diploma in Rural Management from Patna University.\n\nKnown for his long-standing grassroots experience, he is a key strategist within Bihar\'s political landscape. As a patron and guide to the Gaon Samaj initiative, he brings decades of public service experience, strategic vision, and a deep commitment to the development of rural Bihar.',
+    fullBioHi: 'श्री संजय मयूख जी एक प्रमुख भारतीय राजनीतिज्ञ हैं, जो वर्तमान में बिहार विधान परिषद (एमएलसी) के सदस्य और भारतीय जनता पार्टी (भाजपा) के राष्ट्रीय प्रवक्ता के रूप में कार्यरत हैं। उन्होंने पटना विश्वविद्यालय से ग्रामीण प्रबंधन में पीएचडी, एम.ए. और पी.जी. डिप्लोमा किया है।\n\nअपने दीर्घकालिक जमीनी अनुभव के लिए जाने जाने वाले, वह बिहार के राजनीतिक परिदृश्य में एक प्रमुख रणनीतिकार हैं। गांव समाज पहल के संरक्षक और मार्गदर्शक के रूप में, वे अपने साथ सार्वजनिक सेवा का दशकों का अनुभव, रणनीतिक दृष्टिकोण और ग्रामीण बिहार के विकास के प्रति गहरी प्रतिबद्धता लाते हैं।',
+    imageUrl: '/director-sanjay.jpg',
+    email: 'sanjay.mayukh@gmail.com',
+    quote: 'Empowering the grassroots is the key to building a strong and self-reliant Bihar.',
+    quoteHi: 'जमीनी स्तर को सशक्त बनाना ही एक मजबूत और आत्मनिर्भर बिहार के निर्माण की कुंजी है।',
+  },
 ];
 
 export interface BilingualFocusArea extends FocusArea {
