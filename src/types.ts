@@ -9,6 +9,12 @@ export interface Director {
   imageUrl: string;
   email?: string;
   quote?: string;
+  socials?: {
+    instagram?: string;
+    facebook?: string;
+    twitter?: string;
+    youtube?: string;
+  };
 }
 
 export interface FocusArea {

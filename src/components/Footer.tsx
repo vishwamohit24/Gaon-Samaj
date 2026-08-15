@@ -52,32 +52,32 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenDonate }) =>
             <ul className="space-y-2 text-sm text-amber-900 font-medium">
               <li>
                 <button onClick={() => { setActiveTab('home'); window.scrollTo(0,0); }} className="hover:underline hover:text-amber-950">
-                  {t('home')}
+                  {t('navHome')}
                 </button>
               </li>
               <li>
                 <button onClick={() => { setActiveTab('about'); window.scrollTo(0,0); }} className="hover:underline hover:text-amber-950">
-                  {t('aboutUs')}
+                  {t('navAbout')}
                 </button>
               </li>
               <li>
                 <button onClick={() => { setActiveTab('projects'); window.scrollTo(0,0); }} className="hover:underline hover:text-amber-950">
-                  {t('projects')}
+                  {t('navProjects')}
                 </button>
               </li>
               <li>
                 <button onClick={() => { setActiveTab('focus'); window.scrollTo(0,0); }} className="hover:underline hover:text-amber-950">
-                  {t('focusAreas')}
+                  {t('navFocus')}
                 </button>
               </li>
               <li>
                 <button onClick={() => { setActiveTab('stories'); window.scrollTo(0,0); }} className="hover:underline hover:text-amber-950">
-                  {t('stories')}
+                  {t('navStories')}
                 </button>
               </li>
               <li>
                 <button onClick={() => { setActiveTab('contact'); window.scrollTo(0,0); }} className="hover:underline hover:text-amber-950">
-                  {t('getInvolved')}
+                  {t('navGetInvolved')}
                 </button>
               </li>
             </ul>

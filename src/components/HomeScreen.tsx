@@ -3,7 +3,7 @@ import { ScreenTab, Director, Story, Project } from '../types';
 import { HERO_SLIDES, DIRECTORS, FOCUS_AREAS, IMPACT_METRICS, STORIES, BilingualDirector } from '../data/ngoData';
 import { MandalaHeaderPattern, CircularMadhubaniFrame, MadhubaniCardCorner } from './TraditionalPattern';
 import { useLanguage } from '../context/LanguageContext';
-import { ChevronLeft, ChevronRight, UserCheck, HeartHandshake, MapPin, Landmark, Sprout, BookOpen, ShieldAlert, Lightbulb, Users, CheckCircle2, HandHeart, ArrowRight, Calendar, User } from 'lucide-react';
+import { ChevronLeft, ChevronRight, UserCheck, HeartHandshake, MapPin, Landmark, Sprout, BookOpen, ShieldAlert, Lightbulb, Users, CheckCircle2, HandHeart, ArrowRight, Calendar, User, Instagram, Facebook, Twitter, Youtube } from 'lucide-react';
 
 interface HomeScreenProps {
   setActiveTab: (tab: ScreenTab) => void;
@@ -191,11 +191,11 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
           </div>
 
           {/* Stats Badge */}
-          <div className="absolute -bottom-4 right-0 lg:-right-8 z-30 flex flex-col items-center">
+          <div className="absolute -bottom-4 right-0 lg:-right-8 z-30 flex flex-col items-center hover:scale-110 hover:-translate-y-2 transition-all duration-300 cursor-pointer group animate-[bounce_3s_ease-in-out_infinite]">
             {/* Decorative yellow brush stroke under stats */}
-            <div className="absolute inset-0 bg-amber-400 w-full h-12 top-1/2 -z-10 transform -rotate-6" style={{ clipPath: "polygon(0 20%, 100% 0, 90% 100%, 10% 80%)" }}></div>
-            <span className="text-5xl lg:text-6xl font-black text-stone-900 font-anton drop-shadow-md">38</span>
-            <span className="text-xs font-bold text-stone-900 uppercase tracking-widest mt-1">districts<br/>connected</span>
+            <div className="absolute inset-0 bg-amber-400 group-hover:bg-amber-500 w-full h-12 top-1/2 -z-10 transform -rotate-6 transition-colors duration-300" style={{ clipPath: "polygon(0 20%, 100% 0, 90% 100%, 10% 80%)" }}></div>
+            <span className="text-5xl lg:text-6xl font-black text-stone-900 font-anton drop-shadow-md group-hover:text-amber-950 transition-colors duration-300">38</span>
+            <span className="text-xs font-bold text-stone-900 uppercase tracking-widest mt-1 group-hover:text-amber-900 transition-colors duration-300">districts<br/>connected</span>
           </div>
         </div>
         
@@ -231,12 +231,22 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                 <p className="text-sm text-stone-600 leading-relaxed font-normal mb-3">
                   {isHindi ? dir.bioHi || dir.bio : dir.bio}
                 </p>
-                <button
-                  onClick={() => setSelectedDirector(dir)}
-                  className="text-xs font-extrabold text-amber-800 hover:text-amber-950 hover:underline inline-flex items-center gap-1"
-                >
-                  {t('readMore')} &rarr;
-                </button>
+                <div className="flex items-center justify-between mt-1">
+                  <button
+                    onClick={() => setSelectedDirector(dir)}
+                    className="text-xs font-extrabold text-amber-800 hover:text-amber-950 hover:underline inline-flex items-center gap-1"
+                  >
+                    {t('readMore')} &rarr;
+                  </button>
+                  {dir.socials && (
+                    <div className="flex items-center gap-3">
+                      {dir.socials.instagram && <a href={dir.socials.instagram} target="_blank" rel="noopener noreferrer" className="text-amber-600 hover:text-[#E1306C] transition-colors"><Instagram className="w-4 h-4" /></a>}
+                      {dir.socials.facebook && <a href={dir.socials.facebook} target="_blank" rel="noopener noreferrer" className="text-amber-600 hover:text-[#1877F2] transition-colors"><Facebook className="w-4 h-4" /></a>}
+                      {dir.socials.twitter && <a href={dir.socials.twitter} target="_blank" rel="noopener noreferrer" className="text-amber-600 hover:text-[#1DA1F2] transition-colors"><Twitter className="w-4 h-4" /></a>}
+                      {dir.socials.youtube && <a href={dir.socials.youtube} target="_blank" rel="noopener noreferrer" className="text-amber-600 hover:text-[#FF0000] transition-colors"><Youtube className="w-4 h-4" /></a>}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           ))}

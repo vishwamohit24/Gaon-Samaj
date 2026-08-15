@@ -73,6 +73,21 @@ export interface BilingualDirector extends Director {
 
 export const DIRECTORS: BilingualDirector[] = [
   {
+    id: 'dir-3',
+    name: 'Shri Sanjay Mayukh Ji',
+    title: 'Patron & Guide',
+    titleHi: 'संरक्षक एवं मार्गदर्शक',
+    bio: 'Member of the Bihar Legislative Council (MLC) and National Spokesperson for the BJP. Known for his grassroots experience and strategic role in Bihar.',
+    bioHi: 'बिहार विधान परिषद (एमएलसी) के सदस्य और भाजपा के राष्ट्रीय प्रवक्ता। अपने जमीनी अनुभव और बिहार में रणनीतिक भूमिका के लिए जाने जाते हैं।',
+    fullBio: 'Shri Sanjay Mayukh Ji is a prominent Indian politician, currently serving as a Member of the Bihar Legislative Council (MLC) and National Spokesperson for the Bharatiya Janata Party (BJP). He holds a PhD, M.A., and P.G. Diploma in Rural Management from Patna University.\n\nKnown for his long-standing grassroots experience, he is a key strategist within Bihar\'s political landscape. As a patron and guide to the Gaon Samaj initiative, he brings decades of public service experience, strategic vision, and a deep commitment to the development of rural Bihar.',
+    fullBioHi: 'श्री संजय मयूख जी एक प्रमुख भारतीय राजनीतिज्ञ हैं, जो वर्तमान में बिहार विधान परिषद (एमएलसी) के सदस्य और भारतीय जनता पार्टी (भाजपा) के राष्ट्रीय प्रवक्ता के रूप में कार्यरत हैं। उन्होंने पटना विश्वविद्यालय से ग्रामीण प्रबंधन में पीएचडी, एम.ए. और पी.जी. डिप्लोमा किया है।\n\nअपने दीर्घकालिक जमीनी अनुभव के लिए जाने जाने वाले, वह बिहार के राजनीतिक परिदृश्य में एक प्रमुख रणनीतिकार हैं। गांव समाज पहल के संरक्षक और मार्गदर्शक के रूप में, वे अपने साथ सार्वजनिक सेवा का दशकों का अनुभव, रणनीतिक दृष्टिकोण और ग्रामीण बिहार के विकास के प्रति गहरी प्रतिबद्धता लाते हैं।',
+    imageUrl: '/director-sanjay.jpg',
+    email: 'sanjay.mayukh@gmail.com',
+    quote: 'Empowering the grassroots is the key to building a strong and self-reliant Bihar.',
+    quoteHi: 'जमीनी स्तर को सशक्त बनाना ही एक मजबूत और आत्मनिर्भर बिहार के निर्माण की कुंजी है।',
+    socials: { facebook: '#', twitter: '#', instagram: '#', youtube: '#' },
+  },
+  {
     id: 'dir-1',
     name: 'Kundan Kumar Singh',
     title: 'Founder, Politico Insights | President, Gaonsamaj.com',
@@ -80,11 +95,12 @@ export const DIRECTORS: BilingualDirector[] = [
     bio: 'The Architect of Strategy. Hailing from the historic and politically vibrant soil of Siwan, Bihar. Engaged deeply in social work and grassroots action.',
     bioHi: 'रणनीति के शिल्पकार। सीवान, बिहार की ऐतिहासिक और राजनीतिक रूप से जीवंत धरती से जुड़े हुए हैं। सामाजिक कार्यों में जमीनी स्तर पर सक्रिय।',
     fullBio: 'Kundan Kumar Singh’s journey began in the vibrant soil of Siwan, Bihar, where his modest roots and rigorous UPSC preparation at Delhi University gave him a firsthand understanding of India\'s administrative flaws. Engaging deeply in social work and filing RTIs during his academic years, he recognized the stark divide between government policy on paper and actual grassroots implementation.\n\nChanneling this realization into action, he founded Politico Insights to bridge the gap between political leaders and the electorate through high-tech data synchronization. Today, he operates as the strategic backbone for over 15 high-profile leaders, commanding their campaign planning and daily constituency execution with ruthless efficiency.\n\nDespite his high-stakes political work, Kundan remains deeply committed to social upliftment as the President of Gaonsamaj.com. Under his leadership, the initiative has provided free internships to over 800 students, empowering a new generation of capable youth with the guiding belief that there are still "more ways to go, more years to come, more stories to write."',
-    fullBioHi: 'कुंदन कुमार सिंह की यात्रा बिहार के सीवान की जीवंत धरती से शुरू हुई, जहां उनकी साधारण जड़ों और दिल्ली विश्वविद्यालय में कठोर यूपीएससी की तैयारी ने उन्हें भारत की प्रशासनिक खामियों की प्रत्यक्ष समझ दी। अपने शैक्षणिक वर्षों के दौरान सामाजिक कार्यों में गहराई से जुड़ने और आरटीआई दायर करने से, उन्होंने कागजों पर सरकारी नीति और वास्तविक जमीनी कार्यान्वयन के बीच के स्पष्ट अंतर को पहचाना।\n\nइस अहसास को कार्रवाई में बदलते हुए, उन्होंने उच्च तकनीक वाले डेटा सिंक्रोनाइज़ेशन के माध्यम से राजनीतिक नेताओं और मतदाताओं के बीच की खाई को पाटने के लिए पॉलिटिको इनसाइट्स की स्थापना की। आज, वह 15 से अधिक हाई-प्रोफाइल नेताओं के लिए रणनीतिक रीढ़ के रूप में काम करते हैं, और उनके चुनाव अभियान की योजना और दैनिक निर्वाचन क्षेत्र के निष्पादन को शानदार दक्षता के साथ संचालित करते हैं।\n\nअपने हाई-स्टेक राजनीतिक कार्य के बावजूद, कुंदन Gaonsamaj.com के अध्यक्ष के रूप में सामाजिक उत्थान के प्रति गहराई से प्रतिबद्ध हैं। उनके नेतृत्व में, इस पहल ने 800 से अधिक छात्रों को मुफ्त इंटर्नशिप प्रदान की है, और एक नए पीढ़ी के सक्षम युवाओं को इस मार्गदर्शक विश्वास के साथ सशक्त बनाया है कि अभी भी "कई रास्ते तय करने हैं, कई साल आने बाकी हैं, और कई कहानियां लिखनी हैं।"',
+    fullBioHi: 'कुंदन कुमार सिंह की यात्रा बिहार के सीवान की जीवंत धरती से शुरूരുവ हुई, जहां उनकी साधारण जड़ों और दिल्ली विश्वविद्यालय में कठोर यूपीएससी की तैयारी ने उन्हें भारत की प्रशासनिक खामियों की प्रत्यक्ष समझ दी। अपने शैक्षणिक वर्षों के दौरान सामाजिक कार्यों में गहराई से जुड़ने और आरटीआई दायर करने से, उन्होंने कागजों पर सरकारी नीति और वास्तविक जमीनी कार्यान्वयन के बीच के स्पष्ट अंतर को पहचाना।\n\nइस अहसास को कार्रवाई में बदलते हुए, उन्होंने उच्च तकनीक वाले डेटा सिंक्रोनाइज़ेशन के माध्यम से राजनीतिक नेताओं और मतदाताओं के बीच की खाई को पाटने के लिए पॉलिटिको इनसाइट्स की स्थापना की। आज, वह 15 से अधिक हाई-प्रोफाइल नेताओं के लिए रणनीतिक रीढ़ के रूप में काम करते हैं, और उनके चुनाव अभियान की योजना और दैनिक निर्वाचन क्षेत्र के निष्पादन को शानदार दक्षता के साथ संचालित करते हैं।\n\nअपने हाई-स्टेक राजनीतिक कार्य के बावजूद, कुंदन Gaonsamaj.com के अध्यक्ष के रूप में सामाजिक उत्थान के प्रति गहराई से प्रतिबद्ध हैं। उनके नेतृत्व में, इस पहल ने 800 से अधिक छात्रों को मुफ्त इंटर्नशिप प्रदान की है, और एक नए पीढ़ी के सक्षम युवाओं को इस मार्गदर्शक विश्वास के साथ सशक्त बनाया है कि अभी भी "कई रास्ते तय करने हैं, कई साल आने बाकी हैं, और कई कहानियां लिखनी हैं।"',
     imageUrl: '/director-kundan.jpg',
     email: 'kundan@gaonsamaj.com',
     quote: 'More ways to go, more years to come, more stories to write. Stay tuned.',
     quoteHi: 'अभी कई रास्ते तय करने हैं, कई साल आने बाकी हैं, और कई कहानियां लिखनी हैं। हमसे जुड़े रहें।',
+    socials: { facebook: '#', twitter: '#', instagram: '#', youtube: '#' },
   },
   {
     id: 'dir-2',
@@ -99,20 +115,7 @@ export const DIRECTORS: BilingualDirector[] = [
     email: 'chetna@gaonsamaj.com',
     quote: 'Empowerment begins at the grassroots. When we uplift our communities, we build a stronger Bihar.',
     quoteHi: 'सशक्तिकरण की शुरुआत जमीनी स्तर से होती है। जब हम अपने समुदायों का उत्थान करते हैं, तो हम एक मजबूत बिहार का निर्माण करते हैं।',
-  },
-  {
-    id: 'dir-3',
-    name: 'Shri Sanjay Mayukh Ji',
-    title: 'Patron & Guide',
-    titleHi: 'संरक्षक एवं मार्गदर्शक',
-    bio: 'Member of the Bihar Legislative Council (MLC) and National Spokesperson for the BJP. Known for his grassroots experience and strategic role in Bihar.',
-    bioHi: 'बिहार विधान परिषद (एमएलसी) के सदस्य और भाजपा के राष्ट्रीय प्रवक्ता। अपने जमीनी अनुभव और बिहार में रणनीतिक भूमिका के लिए जाने जाते हैं।',
-    fullBio: 'Shri Sanjay Mayukh Ji is a prominent Indian politician, currently serving as a Member of the Bihar Legislative Council (MLC) and National Spokesperson for the Bharatiya Janata Party (BJP). He holds a PhD, M.A., and P.G. Diploma in Rural Management from Patna University.\n\nKnown for his long-standing grassroots experience, he is a key strategist within Bihar\'s political landscape. As a patron and guide to the Gaon Samaj initiative, he brings decades of public service experience, strategic vision, and a deep commitment to the development of rural Bihar.',
-    fullBioHi: 'श्री संजय मयूख जी एक प्रमुख भारतीय राजनीतिज्ञ हैं, जो वर्तमान में बिहार विधान परिषद (एमएलसी) के सदस्य और भारतीय जनता पार्टी (भाजपा) के राष्ट्रीय प्रवक्ता के रूप में कार्यरत हैं। उन्होंने पटना विश्वविद्यालय से ग्रामीण प्रबंधन में पीएचडी, एम.ए. और पी.जी. डिप्लोमा किया है।\n\nअपने दीर्घकालिक जमीनी अनुभव के लिए जाने जाने वाले, वह बिहार के राजनीतिक परिदृश्य में एक प्रमुख रणनीतिकार हैं। गांव समाज पहल के संरक्षक और मार्गदर्शक के रूप में, वे अपने साथ सार्वजनिक सेवा का दशकों का अनुभव, रणनीतिक दृष्टिकोण और ग्रामीण बिहार के विकास के प्रति गहरी प्रतिबद्धता लाते हैं।',
-    imageUrl: '/director-sanjay.jpg',
-    email: 'sanjay.mayukh@gmail.com',
-    quote: 'Empowering the grassroots is the key to building a strong and self-reliant Bihar.',
-    quoteHi: 'जमीनी स्तर को सशक्त बनाना ही एक मजबूत और आत्मनिर्भर बिहार के निर्माण की कुंजी है।',
+    socials: { facebook: '#', twitter: '#', instagram: '#', youtube: '#' },
   },
 ];
 
