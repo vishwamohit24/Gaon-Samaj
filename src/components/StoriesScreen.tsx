@@ -6,6 +6,7 @@ import { Calendar, User, Clock, ArrowRight } from 'lucide-react';
 import { ImpactScreen } from './ImpactScreen';
 import { ScreenTab } from '../types';
 import { SEO } from './SEO';
+import { FlipText } from './FlipText';
 
 interface StoriesScreenProps {
   onSelectStory: (story: Story) => void;
@@ -66,7 +67,7 @@ export const StoriesScreen: React.FC<StoriesScreenProps> = ({ onSelectStory, onO
         
         <div className="text-center max-w-2xl mx-auto mb-10">
           <h1 className="text-3xl sm:text-4xl font-black text-stone-900 tracking-tight mb-2">
-            {t('storiesTitle')}
+            <FlipText>{t('storiesTitle')}</FlipText>
           </h1>
           <p className="text-sm sm:text-base text-stone-600 font-medium">
             {t('storiesSub')}

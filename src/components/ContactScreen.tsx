@@ -4,6 +4,7 @@ import { Phone, Mail, MapPin, Clock, Send, CheckCircle2 } from 'lucide-react';
 import { GetInvolvedScreen } from './GetInvolvedScreen';
 import { ScreenTab } from '../types';
 import { SEO } from './SEO';
+import { FlipText } from './FlipText';
 
 interface ContactScreenProps {
   onOpenDonate: (customAmount?: number) => void;
@@ -70,7 +71,7 @@ export const ContactScreen: React.FC<ContactScreenProps> = ({ onOpenDonate }) =>
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto">
           <h1 className="text-3xl sm:text-4xl font-black text-stone-900 tracking-tight mb-2">
-            {t('contactUs')}
+            <FlipText>{t('contactUs')}</FlipText>
           </h1>
           <p className="text-sm text-stone-600 font-medium">
             {isHindi
@@ -85,7 +86,7 @@ export const ContactScreen: React.FC<ContactScreenProps> = ({ onOpenDonate }) =>
           {/* Contact Details Card */}
           <div className="bg-white rounded-2xl p-8 border border-amber-200 shadow-sm space-y-6">
             <h2 className="text-2xl font-black text-stone-900 border-b border-amber-200 pb-3">
-              {isHindi ? 'मुख्यालय व संपर्क केंद्र' : 'Headquarters & Offices'}
+              <FlipText>{isHindi ? 'मुख्यालय व संपर्क केंद्र' : 'Headquarters & Offices'}</FlipText>
             </h2>
 
             <div className="space-y-5 text-sm text-stone-700">
@@ -156,7 +157,7 @@ export const ContactScreen: React.FC<ContactScreenProps> = ({ onOpenDonate }) =>
           {/* Contact Inquiry Form */}
           <div className="bg-white rounded-2xl p-8 border border-amber-200 shadow-sm">
             <h2 className="text-2xl font-black text-stone-900 mb-6 border-b border-amber-200 pb-3">
-              {isHindi ? 'संदेश भेजें' : 'Send us a Message'}
+              <FlipText>{isHindi ? 'संदेश भेजें' : 'Send a Message'}</FlipText>
             </h2>
 
             {submitted ? (

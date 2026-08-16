@@ -5,6 +5,7 @@ import { ScreenTab } from '../types';
 import { useLanguage } from '../context/LanguageContext';
 import { Shield, Target, Eye, Award, CheckCircle2, Heart } from 'lucide-react';
 import { SEO } from './SEO';
+import { FlipText } from './FlipText';
 
 interface AboutScreenProps {
   onOpenDonate: () => void;
@@ -31,7 +32,7 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenDonate }) => {
             {t('registeredNgo')}
           </span>
           <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-4">
-            {t('aboutTitle')}
+            <FlipText>{t('aboutTitle')}</FlipText>
           </h1>
           <p className="text-stone-300 text-base sm:text-lg leading-relaxed font-normal">
             {t('aboutSub')}
@@ -46,7 +47,7 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenDonate }) => {
             <div className="w-12 h-12 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center mb-4 border border-amber-300">
               <Target className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-bold text-stone-900 mb-2">{t('ourMission')}</h3>
+            <h3 className="text-xl font-bold text-stone-900 mb-2"><FlipText>{t('ourMission')}</FlipText></h3>
             <p className="text-stone-600 text-sm leading-relaxed">
               {t('ourMissionText')}
             </p>
@@ -56,7 +57,7 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenDonate }) => {
             <div className="w-12 h-12 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center mb-4 border border-amber-300">
               <Eye className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-bold text-stone-900 mb-2">{t('ourVision')}</h3>
+            <h3 className="text-xl font-bold text-stone-900 mb-2"><FlipText>{t('ourVision')}</FlipText></h3>
             <p className="text-stone-600 text-sm leading-relaxed">
               {t('ourVisionText')}
             </p>
@@ -66,7 +67,7 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenDonate }) => {
             <div className="w-12 h-12 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center mb-4 border border-amber-300">
               <Shield className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-bold text-stone-900 mb-2">{t('ourValues')}</h3>
+            <h3 className="text-xl font-bold text-stone-900 mb-2"><FlipText>{t('ourValues')}</FlipText></h3>
             <p className="text-stone-600 text-sm leading-relaxed">
               {isHindi
                 ? 'जमीनी सहभागिता, महिला नेतृत्व, सामाजिक न्याय, पारदर्शिता और बिहार के सभी 38 जिलों में मापने योग्य सकारात्मक बदलाव।'
@@ -77,7 +78,7 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenDonate }) => {
 
         {/* Leadership Section */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-black text-stone-900 tracking-tight">{t('directorsDesk')}</h2>
+          <h2 className="text-3xl font-black text-stone-900 tracking-tight"><FlipText>{t('directorsDesk')}</FlipText></h2>
           <p className="text-stone-600 text-sm mt-1">
             {isHindi ? 'अनुभवी सामाजिक कार्यकर्ताओं और लोक नीति सलाहकारों का मार्गदर्शक मंडल।' : 'Experienced social workers and policy advisors leading field teams.'}
           </p>

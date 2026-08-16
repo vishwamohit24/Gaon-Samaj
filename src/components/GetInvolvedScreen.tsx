@@ -3,6 +3,7 @@ import { VolunteerFormData, ScreenTab } from '../types';
 import { useLanguage } from '../context/LanguageContext';
 import { CheckCircle2, Star, ShieldCheck, Heart, Building2, Send } from 'lucide-react';
 import { SEO } from './SEO';
+import { FlipText } from './FlipText';
 
 interface GetInvolvedScreenProps {
   onOpenDonate: (customAmount?: number) => void;
@@ -71,7 +72,7 @@ export const GetInvolvedScreen: React.FC<GetInvolvedScreenProps> = ({ onOpenDona
 
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 sm:p-10 z-10 max-w-4xl mx-auto">
             <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-white mb-3 drop-shadow-md">
-              {t('getInvolvedTitle')}: <br />
+              <FlipText>{t('getInvolvedTitle')}</FlipText>: <br />
               <span className="text-amber-400">
                 {isHindi ? 'बदलाव के भागीदार बनें' : 'Transform Lives in Bihar'}
               </span>
@@ -89,7 +90,7 @@ export const GetInvolvedScreen: React.FC<GetInvolvedScreenProps> = ({ onOpenDona
           <div className="bg-amber-100/50 rounded-2xl p-6 sm:p-8 border border-amber-200 shadow-sm flex flex-col justify-between">
             <div>
               <h2 className="text-2xl font-black text-stone-900 mb-6 text-center">
-                {isHindi ? 'बिहार के भविष्य हेतु योगदान करें' : "Donate for Bihar's Future"}
+                <FlipText>{isHindi ? 'बिहार के भविष्य हेतु योगदान करें' : "Donate for Bihar's Future"}</FlipText>
               </h2>
 
               {/* One-Time / Monthly Toggle */}
@@ -241,7 +242,7 @@ export const GetInvolvedScreen: React.FC<GetInvolvedScreenProps> = ({ onOpenDona
 
             <div className="bg-amber-100/50 rounded-2xl p-6 sm:p-8 border border-amber-200 shadow-sm">
               <h2 className="text-2xl font-black text-stone-900 mb-6 text-center">
-                {t('volunteerHeading')}
+                <FlipText>{t('volunteerHeading')}</FlipText>
               </h2>
 
               {volunteerSubmitted ? (
@@ -330,7 +331,7 @@ export const GetInvolvedScreen: React.FC<GetInvolvedScreenProps> = ({ onOpenDona
                 <Building2 className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-black text-stone-900 mb-2">
-                {isHindi ? 'कॉर्पोरेट सीएसआर साझेदारी' : 'Corporate Partnerships'}
+                <FlipText>{isHindi ? 'कॉर्पोरेट सीएसआर साझेदारी' : 'Corporate Partnerships'}</FlipText>
               </h3>
               <p className="text-xs text-stone-600 leading-relaxed font-medium mb-5 max-w-md mx-auto">
                 {isHindi

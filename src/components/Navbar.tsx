@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
-import { Menu, X, Heart, TreePine, Phone, Mail, Globe, Check, Facebook, Instagram, Youtube, Linkedin, Sparkles } from 'lucide-react';
+import { Menu, X, Heart, Phone, Mail, Globe, Sparkles, Facebook, Instagram, Youtube, Linkedin } from 'lucide-react';
+import { CoolMode } from './CoolMode';
 
 interface NavbarProps {
   onOpenDonate: () => void;
@@ -132,13 +133,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDonate }) => {
               <span>{isHindi ? 'English' : 'हिंदी'}</span>
             </button>
 
-            <button
-              onClick={onOpenDonate}
-              className="bg-amber-400 hover:bg-amber-500 text-amber-950 font-extrabold text-sm px-5 py-2.5 rounded-lg shadow-sm hover:shadow transition-all transform hover:-translate-y-0.5 flex items-center gap-2 border border-amber-500/40"
-            >
-              <Heart className="w-4 h-4 text-amber-950 fill-amber-950" />
-              {t('donateNow')}
-            </button>
+            <CoolMode>
+              <button
+                onClick={onOpenDonate}
+                className="bg-amber-400 hover:bg-amber-500 text-amber-950 font-extrabold text-sm px-5 py-2.5 rounded-lg shadow-sm hover:shadow transition-all transform hover:-translate-y-0.5 flex items-center gap-2 border border-amber-500/40"
+              >
+                <Heart className="w-4 h-4 text-amber-950 fill-amber-950" />
+                {t('donateNow')}
+              </button>
+            </CoolMode>
           </div>
 
           {/* Mobile Menu & Quick Lang Toggle Button */}
@@ -152,12 +155,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDonate }) => {
               <span>{lang === 'en' ? 'HI' : 'EN'}</span>
             </button>
 
-            <button
-              onClick={onOpenDonate}
-              className="bg-amber-400 text-amber-950 font-bold text-xs px-3 py-1.5 rounded-md sm:hidden flex items-center gap-1"
-            >
-              {t('donate')}
-            </button>
+            <CoolMode>
+              <button
+                onClick={onOpenDonate}
+                className="bg-amber-400 text-amber-950 font-bold text-xs px-3 py-1.5 rounded-md sm:hidden flex items-center gap-1"
+              >
+                {t('donate')}
+              </button>
+            </CoolMode>
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

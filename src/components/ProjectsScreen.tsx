@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Project, UpcomingProject, ScreenTab } from '../types';
 import { PROJECTS, UPCOMING_PROJECTS, BilingualProject, BilingualUpcomingProject } from '../data/ngoData';
 import { useLanguage } from '../context/LanguageContext';
-import { MapPin, Users, Calendar, ArrowUpRight, Sparkles } from 'lucide-react';
+import { MapPin, Users, ArrowUpRight, Sparkles, Calendar, BookOpen, TreePine, Banknote } from 'lucide-react';
+import { ProjectDetailModal } from './ProjectDetailModal';
 import { SEO } from './SEO';
+import { FlipText } from './FlipText';
 
 interface ProjectsScreenProps {
   onSelectProject: (project: Project) => void;
@@ -44,7 +46,7 @@ export const ProjectsScreen: React.FC<ProjectsScreenProps> = ({
         {/* Header Title Section */}
         <div className="text-center max-w-3xl mx-auto mb-10">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-stone-900 tracking-tight mb-3">
-            {t('projectsTitle')}
+            <FlipText>{t('projectsTitle')}</FlipText>
           </h1>
           <p className="text-base sm:text-lg text-stone-600 font-medium leading-relaxed">
             {t('projectsSub')}
@@ -147,7 +149,7 @@ export const ProjectsScreen: React.FC<ProjectsScreenProps> = ({
           <div className="lg:col-span-1 bg-amber-100/40 rounded-2xl p-6 border border-amber-200/80 sticky top-28 shadow-xs">
             <div className="flex items-center gap-2 mb-4 pb-3 border-b border-amber-300">
               <Sparkles className="w-5 h-5 text-amber-800" />
-              <h2 className="text-xl font-bold text-stone-900">{t('upcomingTitle')}</h2>
+              <h2 className="text-xl font-bold text-stone-900"><FlipText>{t('upcomingTitle')}</FlipText></h2>
             </div>
 
             <p className="text-xs text-stone-600 mb-5 font-medium">
@@ -194,7 +196,7 @@ export const ProjectsScreen: React.FC<ProjectsScreenProps> = ({
         {/* Our Collective Vision Section */}
         <div className="mt-16 bg-white p-8 sm:p-10 rounded-3xl shadow-sm border border-stone-200">
           <h2 className="text-2xl sm:text-3xl font-black text-stone-900 mb-6 text-center">
-            {isHindi ? 'हमारा सामूहिक दृष्टिकोण (विजन)' : 'Our Collective Vision'}
+            <FlipText>{isHindi ? 'हमारा सामूहिक दृष्टिकोण (विजन)' : 'Our Collective Vision'}</FlipText>
           </h2>
           <div className="space-y-4 text-stone-700 text-sm sm:text-base leading-relaxed">
             <p>
