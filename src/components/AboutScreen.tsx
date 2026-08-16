@@ -4,6 +4,7 @@ import { CircularMadhubaniFrame, MandalaHeaderPattern } from './TraditionalPatte
 import { ScreenTab } from '../types';
 import { useLanguage } from '../context/LanguageContext';
 import { Shield, Target, Eye, Award, CheckCircle2, Heart } from 'lucide-react';
+import { SEO } from './SEO';
 
 interface AboutScreenProps {
   onOpenDonate: () => void;
@@ -14,6 +15,11 @@ export const AboutScreen: React.FC<AboutScreenProps> = ({ onOpenDonate }) => {
 
   return (
     <div className="w-full bg-amber-50/30">
+      <SEO 
+        title={isHindi ? 'हमारे बारे में' : 'About Us'}
+        description="Learn about the mission, vision, and leadership of Gaon Samaj. We are building a prosperous and self-reliant Bihar."
+        canonicalUrl="/about"
+      />
       
       {/* Decorative Mandala Top Accent */}
       <MandalaHeaderPattern />

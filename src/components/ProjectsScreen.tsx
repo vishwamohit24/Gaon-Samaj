@@ -3,6 +3,7 @@ import { Project, UpcomingProject, ScreenTab } from '../types';
 import { PROJECTS, UPCOMING_PROJECTS, BilingualProject, BilingualUpcomingProject } from '../data/ngoData';
 import { useLanguage } from '../context/LanguageContext';
 import { MapPin, Users, Calendar, ArrowUpRight, Sparkles } from 'lucide-react';
+import { SEO } from './SEO';
 
 interface ProjectsScreenProps {
   onSelectProject: (project: Project) => void;
@@ -33,6 +34,11 @@ export const ProjectsScreen: React.FC<ProjectsScreenProps> = ({
 
   return (
     <div className="w-full bg-stone-50/50 py-12 px-4 sm:px-6 lg:px-8">
+      <SEO 
+        title={isHindi ? 'परियोजनाएं' : 'Projects'}
+        description="Explore our ongoing and upcoming grassroots projects in Bihar focused on youth, women empowerment, education, and culture."
+        canonicalUrl="/projects"
+      />
       <div className="max-w-7xl mx-auto">
         
         {/* Header Title Section */}

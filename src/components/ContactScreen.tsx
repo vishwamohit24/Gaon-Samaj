@@ -3,6 +3,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle2 } from 'lucide-react';
 import { GetInvolvedScreen } from './GetInvolvedScreen';
 import { ScreenTab } from '../types';
+import { SEO } from './SEO';
 
 interface ContactScreenProps {
   onOpenDonate: (customAmount?: number) => void;
@@ -32,6 +33,11 @@ export const ContactScreen: React.FC<ContactScreenProps> = ({ onOpenDonate }) =>
 
   return (
     <div className="w-full bg-amber-50/20">
+      <SEO 
+        title={isHindi ? 'संपर्क करें' : 'Contact Us'}
+        description="Get in touch with Gaon Samaj. We would love to hear from you."
+        canonicalUrl="/contact"
+      />
       {/* Sub-navigation Tabs */}
       <div className="w-full border-b border-amber-200 bg-white">
         <div className="max-w-7xl mx-auto px-4 flex justify-center py-4">

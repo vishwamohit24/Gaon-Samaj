@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { VolunteerFormData, ScreenTab } from '../types';
 import { useLanguage } from '../context/LanguageContext';
 import { CheckCircle2, Star, ShieldCheck, Heart, Building2, Send } from 'lucide-react';
+import { SEO } from './SEO';
 
 interface GetInvolvedScreenProps {
   onOpenDonate: (customAmount?: number) => void;
@@ -49,6 +50,11 @@ export const GetInvolvedScreen: React.FC<GetInvolvedScreenProps> = ({ onOpenDona
 
   return (
     <div className="w-full bg-amber-50/20 py-8 px-4 sm:px-6 lg:px-8">
+      <SEO 
+        title={isHindi ? 'शामिल हों' : 'Get Involved'}
+        description="Join Gaon Samaj as a volunteer, partner, or donor. Your contribution helps us empower rural Bihar."
+        canonicalUrl="/get-involved"
+      />
       <div className="max-w-7xl mx-auto space-y-10">
 
         {/* 1. Hero Banner with Overlay */}

@@ -9,11 +9,11 @@ interface SEOProps {
   imageUrl?: string;
 }
 
-export const SEO = ({ title, description, canonicalUrl, type = 'website', imageUrl = 'https://gaonsamaj.com/hero-viksit-bihar.jpg' }: SEOProps) => {
+export const SEO = ({ title, description, canonicalUrl, type = 'website', imageUrl = 'https://www.gaonsamaj.com/hero-empowered-bihar.jpg' }: SEOProps) => {
   const { isHindi } = useLanguage();
   const siteName = isHindi ? 'गांव समाज' : 'Gaon Samaj';
   const fullTitle = `${title} | ${siteName} - Bihar Social Initiative`;
-  const url = canonicalUrl ? `https://gaonsamaj.com${canonicalUrl}` : 'https://gaonsamaj.com';
+  const url = canonicalUrl ? `https://www.gaonsamaj.com${canonicalUrl}` : 'https://www.gaonsamaj.com';
 
   return (
     <Helmet>

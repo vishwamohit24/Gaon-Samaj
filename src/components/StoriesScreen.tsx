@@ -5,6 +5,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { Calendar, User, Clock, ArrowRight } from 'lucide-react';
 import { ImpactScreen } from './ImpactScreen';
 import { ScreenTab } from '../types';
+import { SEO } from './SEO';
 
 interface StoriesScreenProps {
   onSelectStory: (story: Story) => void;
@@ -29,6 +30,11 @@ export const StoriesScreen: React.FC<StoriesScreenProps> = ({ onSelectStory, onO
 
   return (
     <div className="w-full bg-stone-50/50">
+      <SEO 
+        title={isHindi ? 'कहानियाँ' : 'Stories & Impact'}
+        description="Read success stories from across Bihar. See how Gaon Samaj is changing lives at the grassroots level."
+        canonicalUrl="/stories"
+      />
       {/* Sub-navigation Tabs */}
       <div className="w-full border-b border-stone-200 bg-white">
         <div className="max-w-7xl mx-auto px-4 flex justify-center py-4">

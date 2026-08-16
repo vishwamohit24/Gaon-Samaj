@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ScreenTab, Director, Story, Project } from '../types';
 import { HERO_SLIDES, DIRECTORS, FOCUS_AREAS, IMPACT_METRICS, STORIES, BilingualDirector } from '../data/ngoData';
+import { SEO } from './SEO';
 import { MandalaHeaderPattern, CircularMadhubaniFrame, MadhubaniCardCorner } from './TraditionalPattern';
 import { useLanguage } from '../context/LanguageContext';
 import { ChevronLeft, ChevronRight, UserCheck, HeartHandshake, MapPin, Landmark, Sprout, BookOpen, ShieldAlert, Lightbulb, Users, CheckCircle2, HandHeart, ArrowRight, Calendar, User, Instagram, Facebook, Twitter, Youtube } from 'lucide-react';
@@ -448,7 +449,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
       {/* Director Full Bio Modal */}
       {selectedDirector && (
         <div className="fixed inset-0 z-50 bg-stone-900/60 backdrop-blur-xs flex items-center justify-center p-4 animate-fadeIn">
-          <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-amber-300 relative">
+          <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-amber-300 relative max-h-[90vh] overflow-y-auto">
             <button
               onClick={() => setSelectedDirector(null)}
               className="absolute top-4 right-4 text-stone-400 hover:text-stone-700 font-bold text-lg"
